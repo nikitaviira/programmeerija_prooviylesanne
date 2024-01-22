@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static jakarta.persistence.CascadeType.ALL;
@@ -20,7 +20,7 @@ public class Event {
     private Long id;
 
     private String name;
-    private Instant timestamp;
+    private LocalDateTime timestamp;
     private String place;
     @Column(name = "additional_info")
     private String additionalInfo;

@@ -2,6 +2,7 @@ package com.rik.programmeerija_prooviylesanne.util;
 
 import com.rik.programmeerija_prooviylesanne.Main;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -9,7 +10,11 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.time.Instant;
+
+import static com.rik.programmeerija_prooviylesanne.util.DateUtil.isInsideMockRule;
 import static com.rik.programmeerija_prooviylesanne.util.PostgresqlContainer.getInstance;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Testcontainers
 @SpringBootTest(classes = Main.class)
@@ -24,5 +29,13 @@ public class IntTestBase {
     @AfterEach
     void afterEach() {
         eraseDbHelper.eraseDb();
+        DateUtil.resetMockNow();
+        isInsideMockRule = false;
+    }
+
+    @BeforeEach
+    void beforeEach() {
+        isInsideMockRule = true;
+        DateUtil.setMockNow(Instant.now().minus(1, DAYS));
     }
 }
