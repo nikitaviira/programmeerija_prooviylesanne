@@ -1,10 +1,12 @@
-<script setup lang="ts">
-</script>
-
 <template>
-
+  <div class="container px-0 main">
+    <NavBar />
+    <RouterView />
+    <Footer />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<script setup lang="ts">
+  import NavBar from '@/components/NavBar.vue';
+  import Footer from '@/components/Footer.vue';
+</script>
