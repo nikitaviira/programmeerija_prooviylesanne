@@ -1,0 +1,9 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$background-color: rgb(239, 242, 244);
+$footer-color: rgb(55, 55, 55);
+$secondary-color: rgb(33, 90, 156);
+$screen-sm: map-get($grid-breakpoints, "sm");
+$screen-md: map-get($grid-breakpoints, "md");
+$screen-lg: map-get($grid-breakpoints, "lg");

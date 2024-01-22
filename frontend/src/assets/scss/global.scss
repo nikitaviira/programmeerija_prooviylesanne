@@ -1,0 +1,17 @@
+$enable-cssgrid: true;
+
+@import 'bootstrap/scss/bootstrap.scss';
+@import "variables";
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: $background-color;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container.main {
+  max-width: 1300px;
+}
