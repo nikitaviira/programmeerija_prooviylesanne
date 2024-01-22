@@ -6,4 +6,47 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.25.xsd">
 
+    <changeSet id="1705865179174" author="Nikita Viira">
+        <createTable tableName="events">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="timestamp" type="timestamptz" />
+            <column name="place" type="varchar(100)"/>
+            <column name="additional_info" type="varchar(1000)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1705865182993" author="Nikita Viira">
+        <createTable tableName="participant_companies">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)"/>
+            <column name="registry_code" type="varchar(10)"/>
+            <column name="participants_count" type="integer"/>
+            <column name="payment_type" type="smallint"/>
+            <column name="info" type="varchar(5000)"/>
+            <column name="event_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_event_participant_companies" references="events(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1705865465479" author="Nikita Viira">
+        <createTable tableName="participant_persons">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(100)"/>
+            <column name="last_name" type="varchar(100)"/>
+            <column name="personal_code" type="varchar(11)"/>
+            <column name="payment_type" type="smallint"/>
+            <column name="info" type="varchar(1500)"/>
+            <column name="event_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_event_participant_persons" references="events(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
