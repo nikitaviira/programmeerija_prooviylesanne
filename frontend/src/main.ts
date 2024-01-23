@@ -12,9 +12,9 @@ const app = createApp(App);
 
 app.use(router);
 app.use(Vue3Toastify, {
-  autoClose: 150000,
-  toastClassName:'toast',
-  bodyClassName: 'toast',
+  autoClose: 2000,
+  toastClassName: 'custom-toast',
+  bodyClassName: 'custom-toast',
   closeButton: false,
   transition: 'slide',
   dangerouslyHTMLString: true,
