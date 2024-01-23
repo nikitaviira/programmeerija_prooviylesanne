@@ -23,6 +23,7 @@ import static org.springframework.http.ResponseEntity.status;
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler(RuntimeException.class)
   public ResponseEntity<ErrorDto> handleRuntimeException(RuntimeException exception) {
+    log.error(exception.getMessage());
     return status(INTERNAL_SERVER_ERROR).body(new ErrorDto(exception.getMessage()));
   }
 
