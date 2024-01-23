@@ -30,21 +30,21 @@
         </label>
         <div class="col-sm-9">
           <input
-            v-model.trim="eventForm.datetime"
-            :class="{'is-invalid': $v.datetime.$error}"
+            v-model.trim="eventForm.timestamp"
+            :class="{'is-invalid': $v.timestamp.$error}"
             type="datetime-local"
             :min="new Date().toISOString().slice(0, -8)"
             class="form-control"
-            @input="$v.datetime.$touch()"
+            @input="$v.timestamp.$touch()"
           >
           <div
-            v-if="$v.datetime.$dirty && $v.datetime.required.$invalid"
+            v-if="$v.timestamp.$dirty && $v.timestamp.required.$invalid"
             class="invalid-feedback d-block"
           >
             See väli on kohustuslik
           </div>
           <div
-            v-else-if="$v.datetime.$dirty && $v.datetime.dateTimeValidation.$invalid"
+            v-else-if="$v.timestamp.$dirty && $v.timestamp.timestampValidation.$invalid"
             class="invalid-feedback d-block"
           >
             Toimumisaeg peab olema tulevikus
@@ -105,30 +105,35 @@
 
 <script setup lang="ts">
   import Form from '@/components/Form.vue';
-  import { ref } from 'vue';
+  import {ref} from 'vue';
   import useVuelidate from '@vuelidate/core';
-  import { required } from '@vuelidate/validators';
-  import { useRouter } from 'vue-router';
+  import {required} from '@vuelidate/validators';
+  import {useRouter} from 'vue-router';
+  import eventsApi from '@/api/controllers/events';
+  import type {SaveEventDto} from "@/api/types";
 
   const router = useRouter();
-  const dateTimeValidation = (value: string) => new Date() <= new Date(value);
+  const timestampValidation = (value: string) => new Date() <= new Date(value);
   const rules = {
     name: { required },
-    datetime: { required, dateTimeValidation },
+    timestamp: { required, timestampValidation },
     place: { required }
   };
-  const eventForm = ref({
+  const eventForm = ref<SaveEventDto>({
     name: '',
-    datetime: '',
+    timestamp: '',
     place: '',
     info: ''
   });
   const $v = useVuelidate(rules, eventForm);
 
   async function submitForm() {
-    const isFormCorrect = await $v.value.$validate();
-    if (!isFormCorrect) return;
-    console.log('is valid');
+    await $v.value.$validate().then(async (result) => {
+      if (result) {
+        await eventsApi.saveEvent(eventForm.value);
+        await goToHomePage();
+      }
+    })
   }
 
   async function goToHomePage() {

@@ -40,58 +40,22 @@
 
 <script setup lang="ts">
   import EventsTable from '@/components/EventsTable.vue';
-  import type { Event } from '@/api/types';
+  import type { EventDto } from '@/api/types';
+  import {onBeforeMount, ref} from "vue";
+  import eventsApi from '@/api/controllers/events';
 
-  const futureEvents: Event[] = [
-    {
-      id: 1,
-      name: 'Aenean commodo',
-      date: '14.02.2016'
-    },
-    {
-      id: 2,
-      name: 'Fusce ex dui, finibus eu luctus vel',
-      date: '12.03.2023'
-    },
-    {
-      id: 3,
-      name: 'Nunc lobortis metus eu massa viverra ultri iplacerat nibh',
-      date: '12.04.2024'
-    },
-    {
-      id: 4,
-      name: 'Integer nec nulla vitae',
-      date: '12.04.2024'
-    }
-  ];
+  const futureEvents = ref<EventDto[]>([]);
+  const pastEvents = ref<EventDto[]>([]);
 
-  const pastEvents: Event[] = [
-    {
-      id: 1,
-      name: 'Aenean commodo',
-      date: '14.02.2016'
-    },
-    {
-      id: 2,
-      name: 'Fusce ex dui, finibus eu luctus vel',
-      date: '12.03.2023'
-    },
-    {
-      id: 3,
-      name: 'Nunc lobortis metus eu massa viverra ultri iplacerat nibh',
-      date: '12.04.2024'
-    },
-    {
-      id: 4,
-      name: 'Integer nec nulla vitae',
-      date: '12.04.2024'
-    },
-    {
-      id: 5,
-      name: 'Praesent molestie dapibus lorem',
-      date: '12.04.2024'
-    }
-  ];
+  onBeforeMount(async () => {
+    const [future, past] = await Promise.all([
+      eventsApi.futureEvents(),
+      eventsApi.pastEvents()
+    ]);
+
+    futureEvents.value = future.data;
+    pastEvents.value = past.data;
+  })
 </script>
 
 <style lang="scss" scoped>

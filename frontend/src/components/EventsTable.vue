@@ -4,7 +4,7 @@
       {{ title }}
     </h5>
     <div class="bg-white p-3">
-      <div class="grid">
+      <div v-if="events.length > 0" class="grid">
         <template
           v-for="(event, index) in events"
           :key="index"
@@ -33,16 +33,17 @@
           </div>
         </template>
       </div>
+      <p class="text-center" v-else>Ei ole ühtegi üritust</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import type { Event } from '@/api/types';
+  import type { EventDto } from '@/api/types';
 
   withDefaults(defineProps<{
     title: string,
-    events: Event[],
+    events: EventDto[],
     showDelete?: boolean
   }>(), {
     showDelete: false
