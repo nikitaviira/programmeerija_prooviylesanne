@@ -7,19 +7,25 @@ import com.rik.programmeerija_prooviylesanne.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.rik.programmeerija_prooviylesanne.util.DateUtil.formatDate;
+import static com.rik.programmeerija_prooviylesanne.util.DateUtil.nowLocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class EventService {
   private final EventRepository eventRepository;
 
-  public List<EventDto> allEvents() {
-    return eventRepository.findAll().stream()
-        .map(e -> new EventDto(e.getId(), e.getName(), formatDate(e.getTimestamp())))
-        .toList();
+  public List<EventDto> futureEvents() {
+    LocalDateTime currentDateTime = nowLocalDateTime();
+    return eventRepository.findAllByTimestampGreaterThan(currentDateTime).stream().map(this::mapToEventDto).toList();
+  }
+
+  public List<EventDto> pastEvents() {
+    LocalDateTime currentDateTime = nowLocalDateTime();
+    return eventRepository.findAllByTimestampIsLessThanEqual(currentDateTime).stream().map(this::mapToEventDto).toList();
   }
 
   public void saveEvent(SaveEventDto dto) {
@@ -33,5 +39,9 @@ public class EventService {
 
   public void deleteEvent(Long id) {
     eventRepository.deleteById(id);
+  }
+
+  private EventDto mapToEventDto(Event event) {
+    return new EventDto(event.getId(), event.getName(), formatDate(event.getTimestamp()));
   }
 }

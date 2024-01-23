@@ -15,12 +15,17 @@ import java.util.List;
 public class EventController {
     private final EventService eventService;
 
-    @GetMapping
-    public List<EventDto> allEvents() {
-        return eventService.allEvents();
+    @GetMapping("/future")
+    public List<EventDto> futureEvents() {
+        return eventService.futureEvents();
     }
 
-    @PostMapping
+    @GetMapping("/past")
+    public List<EventDto> pastEvents() {
+        return eventService.pastEvents();
+    }
+
+    @PostMapping("/save")
     public void saveEvent(@Valid @RequestBody SaveEventDto event) {
         eventService.saveEvent(event);
     }

@@ -64,23 +64,52 @@ public class EventControllerTest extends IntTestBase {
   }
 
   @Test
-  public void allEvents() throws Exception {
+  public void futureEvents() throws Exception {
+    setMockNow(LocalDateTime.of(2024, 1, 22, 17, 30).atZone(TALLINN).toInstant());
+
     eventRepository.saveAllAndFlush(List.of(
-        event("Event 1", LocalDateTime.of(2024, 1, 1, 1, 1), "Place 1", "some info"),
-        event("Event 2", LocalDateTime.of(2024, 2, 2, 2, 2), "Place 2", "other info"))
+        event("Event 1", LocalDateTime.of(2024, 1, 22, 17, 29), "Place 1", ""),
+        event("Event 2", LocalDateTime.of(2024, 1, 22, 17, 30), "Place 2", ""),
+        event("Event 3", LocalDateTime.of(2024, 1, 23, 2, 2), "Place 3", ""),
+        event("Event 4", LocalDateTime.of(2024, 1, 24, 2, 2), "Place 4", ""))
     );
 
-    mockMvc.perform(get("/api/events"))
+    mockMvc.perform(get("/api/events/future"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(APPLICATION_JSON))
+
+        .andExpect(jsonPath("$[0].id", is(3)))
+        .andExpect(jsonPath("$[0].name", is("Event 3")))
+        .andExpect(jsonPath("$[0].date", is("23.01.2024")))
+
+        .andExpect(jsonPath("$[1].id", is(4)))
+        .andExpect(jsonPath("$[1].name", is("Event 4")))
+        .andExpect(jsonPath("$[1].date", is("24.01.2024")));
+
+  }
+
+  @Test
+  public void pastEvents() throws Exception {
+    setMockNow(LocalDateTime.of(2024, 1, 22, 17, 30).atZone(TALLINN).toInstant());
+
+    eventRepository.saveAllAndFlush(List.of(
+        event("Event 1", LocalDateTime.of(2024, 1, 22, 17, 29), "Place 1", ""),
+        event("Event 2", LocalDateTime.of(2024, 1, 22, 17, 30), "Place 2", ""),
+        event("Event 3", LocalDateTime.of(2024, 1, 23, 2, 2), "Place 3", ""),
+        event("Event 4", LocalDateTime.of(2024, 1, 24, 2, 2), "Place 4", ""))
+    );
+
+    mockMvc.perform(get("/api/events/past"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(APPLICATION_JSON))
 
         .andExpect(jsonPath("$[0].id", is(1)))
         .andExpect(jsonPath("$[0].name", is("Event 1")))
-        .andExpect(jsonPath("$[0].date", is("01.01.2024")))
+        .andExpect(jsonPath("$[0].date", is("22.01.2024")))
 
         .andExpect(jsonPath("$[1].id", is(2)))
         .andExpect(jsonPath("$[1].name", is("Event 2")))
-        .andExpect(jsonPath("$[1].date", is("02.02.2024")));
+        .andExpect(jsonPath("$[1].date", is("22.01.2024")));
 
   }
 
