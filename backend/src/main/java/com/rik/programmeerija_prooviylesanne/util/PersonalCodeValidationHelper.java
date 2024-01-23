@@ -10,7 +10,7 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 import static java.util.Arrays.stream;
 import static java.util.Objects.isNull;
 
-public class PersonalCodeValidator {
+public class PersonalCodeValidationHelper {
     private static final DateTimeFormatter DATE_FORMATTER = ofPattern("uuuuMMdd");
 
     public static boolean validatePersonalCode(String personalCode) {

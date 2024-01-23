@@ -2,11 +2,11 @@ package com.rik.programmeerija_prooviylesanne;
 
 import org.junit.jupiter.api.Test;
 
-import static com.rik.programmeerija_prooviylesanne.util.PersonalCodeValidator.validatePersonalCode;
+import static com.rik.programmeerija_prooviylesanne.util.PersonalCodeValidationHelper.validatePersonalCode;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PersonalCodeValidatorTest {
+public class PersonalCodeValidationHelperTest {
     @Test
     public void test_valid() {
         String validPersonalCode = "39807093721";
