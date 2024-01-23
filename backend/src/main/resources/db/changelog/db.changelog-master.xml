@@ -7,19 +7,19 @@
           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.25.xsd">
 
     <changeSet id="1705865179174" author="Nikita Viira">
-        <createTable tableName="events">
+        <createTable tableName="event">
             <column name="id" type="bigserial">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(100)"/>
-            <column name="timestamp" type="timestamptz" />
+            <column name="timestamp" type="timestamp" />
             <column name="place" type="varchar(100)"/>
             <column name="additional_info" type="varchar(1000)"/>
         </createTable>
     </changeSet>
 
     <changeSet id="1705865182993" author="Nikita Viira">
-        <createTable tableName="participant_companies">
+        <createTable tableName="company">
             <column name="id" type="bigserial">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -28,15 +28,12 @@
             <column name="participants_count" type="integer"/>
             <column name="payment_type" type="smallint"/>
             <column name="info" type="varchar(5000)"/>
-            <column name="event_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_event_participant_companies" references="events(id)"/>
-            </column>
         </createTable>
     </changeSet>
 
     <changeSet id="1705865465479" author="Nikita Viira">
-        <createTable tableName="participant_persons">
-            <column name="id" type="BIGSERIAL">
+        <createTable tableName="person">
+            <column name="id" type="bigserial">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="first_name" type="varchar(100)"/>
@@ -44,8 +41,35 @@
             <column name="personal_code" type="varchar(11)"/>
             <column name="payment_type" type="smallint"/>
             <column name="info" type="varchar(1500)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1706009830871" author="Nikita Viira">
+        <createTable tableName="event_company">
             <column name="event_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_event_participant_persons" references="events(id)"/>
+                <constraints
+                        references="event(id)"
+                        foreignKeyName="fk_event_company_event_id"/>
+            </column>
+            <column name="company_id" type="bigint">
+                <constraints
+                        references="company(id)"
+                        foreignKeyName="fk_event_company_company_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1706009839354" author="Nikita Viira">
+        <createTable tableName="event_person">
+            <column name="event_id" type="bigint">
+                <constraints
+                        references="event(id)"
+                        foreignKeyName="fk_event_person_event_id"/>
+            </column>
+            <column name="person_id" type="bigint">
+                <constraints
+                        references="person(id)"
+                        foreignKeyName="fk_event_person_person_id"/>
             </column>
         </createTable>
     </changeSet>

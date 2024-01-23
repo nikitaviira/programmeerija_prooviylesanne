@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "participant_companies")
-public class ParticipantCompany {
+public class Company {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
@@ -24,7 +25,6 @@ public class ParticipantCompany {
     private PaymentType paymentType;
     private String info;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
+    @ManyToMany(mappedBy = "companies")
+    private List<Event> events;
 }

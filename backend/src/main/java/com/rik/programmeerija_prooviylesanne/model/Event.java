@@ -5,15 +5,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -22,12 +22,29 @@ public class Event {
     private String name;
     private LocalDateTime timestamp;
     private String place;
-    @Column(name = "additional_info")
-    private String additionalInfo;
+    private String info;
 
-    @OneToMany(mappedBy = "event", cascade = ALL, orphanRemoval = true)
-    private List<ParticipantCompany> participantCompanies;
+    @ManyToMany(cascade = PERSIST)
+    @JoinTable(
+        name = "event_company",
+        joinColumns = @JoinColumn(name = "event_id"),
+        inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
+    private List<Company> companies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "event", cascade = ALL, orphanRemoval = true)
-    private List<ParticipantPerson> participantPersons;
+    @ManyToMany(cascade = PERSIST)
+    @JoinTable(
+        name = "event_person",
+        joinColumns = @JoinColumn(name = "event_id"),
+        inverseJoinColumns = @JoinColumn(name = "person_id")
+    )
+    private List<Person> persons = new ArrayList<>();
+
+    public void addCompany(Company company) {
+        this.companies.add(company);
+    }
+
+    public void addPerson(Person person) {
+        this.persons.add(person);
+    }
 }
