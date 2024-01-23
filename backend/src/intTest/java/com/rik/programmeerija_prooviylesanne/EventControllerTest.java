@@ -33,7 +33,7 @@ public class EventControllerTest extends IntTestBase {
     setMockNow(LocalDateTime.of(2024, 1, 22, 17, 0).atZone(TALLINN).toInstant());
     String event = "{\"name\": \"Sunnipaev\", \"timestamp\" : \"2024-01-22T17:01\", \"place\" : \"Mustamae tee 11\", \"info\" : \"\"}";
     mockMvc.perform(
-            post("/api/events")
+            post("/api/events/save")
                 .content(event)
                 .contentType(APPLICATION_JSON))
         .andExpect(status().isOk());
@@ -43,7 +43,7 @@ public class EventControllerTest extends IntTestBase {
     assertThat(eventOpt.get().getId()).isEqualTo(1L);
     assertThat(eventOpt.get().getName()).isEqualTo("Sunnipaev");
     assertThat(eventOpt.get().getPlace()).isEqualTo("Mustamae tee 11");
-    assertThat(eventOpt.get().getAdditionalInfo()).isEqualTo("");
+    assertThat(eventOpt.get().getInfo()).isEqualTo("");
     assertThat(eventOpt.get().getTimestamp()).isEqualTo(LocalDateTime.of(2024, 1, 22, 17, 1));
   }
 
@@ -51,7 +51,7 @@ public class EventControllerTest extends IntTestBase {
   public void saveEvent_validationFailed() throws Exception {
     String user = "{\"name\": \"\", \"timestamp\" : \"2024-01-20T17:01\", \"place\" : \"\", \"info\" : \"\"}";
     mockMvc.perform(
-            post("/api/events")
+            post("/api/events/save")
                 .content(user)
                 .contentType(APPLICATION_JSON))
         .andExpect(status().isBadRequest())
@@ -115,7 +115,8 @@ public class EventControllerTest extends IntTestBase {
 
   @Test
   public void deleteEvents() throws Exception {
-    eventRepository.saveAndFlush(event("Event 1", LocalDateTime.of(2024, 1, 1, 1, 1), "Place 1", "some info"));
+    setMockNow(LocalDateTime.of(2024, 1, 1, 1, 1).atZone(TALLINN).toInstant());
+    eventRepository.saveAndFlush(event("Event 1", LocalDateTime.of(2024, 2, 2, 2, 2), "Place 1", "some info"));
     assertThat(eventRepository.findAll()).hasSize(1);
 
     mockMvc.perform(delete("/api/events/1")).andExpect(status().isOk());
@@ -123,12 +124,25 @@ public class EventControllerTest extends IntTestBase {
     assertThat(eventRepository.findAll()).isEmpty();
   }
 
+  @Test
+  public void deleteEvents_canNotDeleteEventInPast() throws Exception {
+    eventRepository.saveAndFlush(event("Event 1", LocalDateTime.of(2024, 1, 1, 1, 1), "Place 1", "some info"));
+    assertThat(eventRepository.findAll()).hasSize(1);
+
+    mockMvc.perform(delete("/api/events/1"))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(APPLICATION_JSON))
+        .andExpect(jsonPath("$.message", is("Ei saa kustuta toimunud üritust")));
+
+    assertThat(eventRepository.findAll()).hasSize(1);
+  }
+
   private Event event(String name, LocalDateTime timestamp, String place, String info) {
     Event event = new Event();
     event.setName(name);
     event.setTimestamp(timestamp);
     event.setPlace(place);
-    event.setAdditionalInfo(info);
+    event.setInfo(info);
     return event;
   }
 }

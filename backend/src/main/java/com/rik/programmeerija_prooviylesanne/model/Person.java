@@ -11,6 +11,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "person")
 public class Person {
     @Id
     @GeneratedValue(strategy = IDENTITY)

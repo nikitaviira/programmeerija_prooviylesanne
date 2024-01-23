@@ -1,5 +1,6 @@
 package com.rik.programmeerija_prooviylesanne.service;
 
+import com.rik.programmeerija_prooviylesanne.config.ServiceException;
 import com.rik.programmeerija_prooviylesanne.dto.EventDto;
 import com.rik.programmeerija_prooviylesanne.dto.SaveEventDto;
 import com.rik.programmeerija_prooviylesanne.model.Event;
@@ -33,14 +34,14 @@ public class EventService {
     event.setName(dto.name());
     event.setPlace(dto.place());
     event.setTimestamp(dto.timestamp());
-    event.setAdditionalInfo(dto.info());
+    event.setInfo(dto.info());
     eventRepository.save(event);
   }
 
   public void deleteEvent(Long id) {
     eventRepository.findById(id).ifPresent(event -> {
       if (event.getTimestamp().isBefore(nowLocalDateTime())) {
-        throw new IllegalStateException("Ei saa kustuta toimunud üritust");
+        throw new ServiceException("Ei saa kustuta toimunud üritust");
       }
 
       eventRepository.deleteById(id);

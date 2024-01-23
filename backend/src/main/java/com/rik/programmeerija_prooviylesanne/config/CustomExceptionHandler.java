@@ -27,6 +27,11 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     return status(INTERNAL_SERVER_ERROR).body(new ErrorDto(exception.getMessage()));
   }
 
+  @ExceptionHandler(ServiceException.class)
+  public ResponseEntity<ErrorDto> handleServiceException(ServiceException exception) {
+    return status(BAD_REQUEST).body(new ErrorDto(exception.getMessage()));
+  }
+
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
     List<String> errorList = ex
