@@ -28,6 +28,7 @@
           title="Tulevased üritused"
           :events="futureEvents"
           show-delete
+          @eventDeleted="loadEvents()"
         />
         <EventsTable
           title="Toimunud üritused"
@@ -48,6 +49,10 @@
   const pastEvents = ref<EventDto[]>([]);
 
   onBeforeMount(async () => {
+    await loadEvents();
+  })
+
+  async function loadEvents() {
     const [future, past] = await Promise.all([
       eventsApi.futureEvents(),
       eventsApi.pastEvents()
@@ -55,7 +60,7 @@
 
     futureEvents.value = future.data;
     pastEvents.value = past.data;
-  })
+  }
 </script>
 
 <style lang="scss" scoped>

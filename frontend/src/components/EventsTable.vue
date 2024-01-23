@@ -29,6 +29,7 @@
               class="action-icon"
               src="@/assets/images/remove.svg"
               alt="remove event button"
+              @click="deleteEvent(event.id)"
             >
           </div>
         </template>
@@ -40,6 +41,7 @@
 
 <script setup lang="ts">
   import type { EventDto } from '@/api/types';
+  import eventsApi from '@/api/controllers/events';
 
   withDefaults(defineProps<{
     title: string,
@@ -48,6 +50,13 @@
   }>(), {
     showDelete: false
   });
+
+  const emit = defineEmits<{ (e: 'event-deleted'): void }>();
+
+  async function deleteEvent(id: number) {
+    await eventsApi.deleteEvent(id);
+    emit('event-deleted');
+  }
 </script>
 
 <style scoped lang="scss">

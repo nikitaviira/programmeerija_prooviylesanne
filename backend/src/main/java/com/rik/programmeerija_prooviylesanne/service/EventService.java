@@ -38,7 +38,13 @@ public class EventService {
   }
 
   public void deleteEvent(Long id) {
-    eventRepository.deleteById(id);
+    eventRepository.findById(id).ifPresent(event -> {
+      if (event.getTimestamp().isBefore(nowLocalDateTime())) {
+        throw new IllegalStateException("Ei saa kustuta toimunud üritust");
+      }
+
+      eventRepository.deleteById(id);
+    });
   }
 
   private EventDto mapToEventDto(Event event) {
