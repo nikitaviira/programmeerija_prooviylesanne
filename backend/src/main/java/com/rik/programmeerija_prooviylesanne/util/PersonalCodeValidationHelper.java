@@ -25,8 +25,8 @@ public class PersonalCodeValidationHelper {
         return calculateControlNumber(personalCode) == getNumericValue(personalCode.charAt(personalCode.length() - 1));
     }
 
-    private static int calculateControlNumber(String personalCode) {
-        String[] numberArray = personalCode.substring(0, 10).split("");
+    static int calculateControlNumber(String personalCode) {
+        String[] numberArray = personalCode.substring(0, personalCode.length() - 1).split("");
         List<Integer> numberList = stream(numberArray).map(Integer::valueOf).toList();
         int sum = 0;
         int[] multipliers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1};
