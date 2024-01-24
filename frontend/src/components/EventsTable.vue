@@ -25,6 +25,7 @@
             <img
               class="action-icon mx-2"
               src="@/assets/images/people.svg"
+              @click="toParticipantsPage(event.id)"
             >
             <img
               v-if="showDelete"
@@ -48,6 +49,7 @@
 <script setup lang="ts">
   import type { EventDto } from '@/api/types';
   import eventsApi from '@/api/controllers/events';
+  import { useRouter } from 'vue-router';
 
   withDefaults(defineProps<{
     title: string,
@@ -57,11 +59,16 @@
     showDelete: false
   });
 
+  const router = useRouter();
   const emit = defineEmits<{ (e: 'event-deleted'): void }>();
 
   async function deleteEvent(id: number) {
     await eventsApi.deleteEvent(id);
     emit('event-deleted');
+  }
+
+  async function toParticipantsPage(id: number) {
+    await router.push(`/event/${id}/participants`);
   }
 </script>
 
@@ -71,11 +78,6 @@
   .grid {
     font-size: 14px;
     gap: 10px;
-  }
-
-  .action-icon {
-    width: 25px;
-    cursor: pointer;
   }
 
   .table-title {

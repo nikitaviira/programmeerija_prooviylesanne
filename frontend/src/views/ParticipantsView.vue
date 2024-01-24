@@ -13,6 +13,7 @@
           Some event name
         </div>
       </div>
+
       <div class="row mb-3">
         <div class="col-sm-3">
           Toimumisaeg:
@@ -21,6 +22,7 @@
           18.02.2016 14:55
         </div>
       </div>
+
       <div class="row mb-3">
         <div class="col-sm-3">
           Koht:
@@ -29,6 +31,7 @@
           Some random place
         </div>
       </div>
+
       <p>Osavõtjad:</p>
       <div class="grid">
         <template
@@ -90,13 +93,13 @@
       <CompanyForm
         v-if="participantType === ParticipantType.COMPANY"
         @saved="() => {}"
-        @back="() => {}"
+        @back="toHomePage"
       />
 
       <PersonForm
         v-if="participantType === ParticipantType.PERSON"
         @saved="() => {}"
-        @back="() => {}"
+        @back="toHomePage"
       />
     </div>
   </Form>
@@ -107,61 +110,16 @@
   import { ref } from 'vue';
   import CompanyForm from '@/components/CompanyForm.vue';
   import PersonForm from '@/components/PersonForm.vue';
+  import { useRouter } from 'vue-router';
 
   enum ParticipantType {
     COMPANY, PERSON
   }
 
+  const router = useRouter();
   const participantType = ref<ParticipantType>(ParticipantType.PERSON);
+
+  async function toHomePage() {
+    await router.push('/');
+  }
 </script>
-
-<style scoped lang="scss">
-  @import "@/assets/scss/variables";
-
-  .form-container {
-    width: 50%;
-  }
-
-  @media (max-width: $screen-lg) {
-    .form-container {
-      width: 75%;
-    }
-  }
-
-  @media (max-width: $screen-sm) {
-    .form-container {
-      width: 100%;
-    }
-  }
-
-  .form-title {
-    color: $secondary-color;
-  }
-
-  button {
-    width: 80px;
-    color: white;
-
-    &.back-btn {
-      background: grey;
-    }
-
-    &.submit-btn {
-      background: $secondary-color;
-    }
-  }
-
-  .grid {
-    gap: 10px;
-  }
-
-  .action-icon {
-    width: 25px;
-    cursor: pointer;
-  }
-
-  .table-title {
-    background: $secondary-color;
-    color: white;
-  }
-</style>

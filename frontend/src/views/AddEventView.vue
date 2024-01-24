@@ -90,7 +90,7 @@
       <button
         type="button"
         class="btn back-btn me-2"
-        @click="goToHomePage"
+        @click="toHomePage"
       >
         Tagasi
       </button>
@@ -136,48 +136,12 @@
     await $v.value.$validate().then(async(result) => {
       if (result) {
         await eventsApi.saveEvent(eventForm.value);
-        await goToHomePage();
+        await toHomePage();
       }
     });
   }
 
-  async function goToHomePage() {
+  async function toHomePage() {
     await router.push('/');
   }
 </script>
-
-<style lang="scss" scoped>
-  @import "@/assets/scss/variables";
-
-  .form-container {
-    width: 50%;
-  }
-
-  @media (max-width: $screen-lg) {
-    .form-container {
-      width: 75%;
-    }
-  }
-
-  @media (max-width: $screen-sm) {
-    .form-container {
-      width: 100%;
-    }
-  }
-
-  .form-title {
-    color: $secondary-color;
-  }
-
-  button {
-    color: white;
-
-    &.back-btn {
-      background: grey;
-    }
-
-    &.submit-btn {
-      background: $secondary-color;
-    }
-  }
-</style>

@@ -20,3 +20,40 @@ html, body, #app {
   background: red !important;
   color: white !important;
 }
+
+.form-container {
+  width: 50%;
+
+  @media (max-width: $screen-lg) {
+    width: 75%;
+  }
+
+  @media (max-width: $screen-sm) {
+    width: 100%;
+  }
+
+  .form-title {
+    color: $secondary-color;
+  }
+
+  button {
+    color: white;
+
+    &.back-btn {
+      background: grey;
+    }
+
+    &.submit-btn {
+      background: $secondary-color;
+    }
+  }
+}
+
+.grid {
+  gap: 10px;
+}
+
+.action-icon {
+  width: 25px;
+  cursor: pointer;
+}
