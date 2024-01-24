@@ -113,6 +113,10 @@
         maxlength="1500"
         class="form-control"
       />
+      <WordCounter
+        :length="personForm.info.length"
+        :max-length="1500"
+      />
     </div>
   </div>
 
@@ -139,6 +143,7 @@
   import { PaymentType, type PersonDto } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
   import { personalCodeIsValid } from '@/util/validation';
+  import WordCounter from '@/components/WordCounter.vue';
 
   const emit = defineEmits<{
     (e: 'saved'): void,

@@ -119,6 +119,10 @@
         maxlength="5000"
         class="form-control"
       />
+      <WordCounter
+        :length="companyForm.info.length"
+        :max-length="5000"
+      />
     </div>
   </div>
 
@@ -145,6 +149,7 @@
   import { type CompanyDto, PaymentType } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
   import { registryCodeIsValid } from '@/util/validation';
+  import WordCounter from '@/components/WordCounter.vue';
 
   const emit = defineEmits<{
     (e: 'saved'): void,

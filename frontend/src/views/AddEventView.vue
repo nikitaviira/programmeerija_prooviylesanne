@@ -81,6 +81,10 @@
             maxlength="1000"
             class="form-control"
           />
+          <WordCounter
+            :length="eventForm.info.length"
+            :max-length="1000"
+          />
         </div>
       </div>
       <button
@@ -109,6 +113,7 @@
   import { useRouter } from 'vue-router';
   import eventsApi from '@/api/controllers/events';
   import type { SaveEventDto } from '@/api/types';
+  import WordCounter from '@/components/WordCounter.vue';
 
   const router = useRouter();
   const timestampValidation = (value: string) => new Date() <= new Date(value);
