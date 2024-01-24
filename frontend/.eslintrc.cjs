@@ -37,6 +37,7 @@ module.exports = {
         'arrow-parens': ['warn', 'always'],
 
         // vue rules
+        'vue/no-multiple-template-root': 'off',
         'vue/array-bracket-spacing': 'error',
         'vue/arrow-spacing': 'error',
         'vue/block-spacing': 'error',
