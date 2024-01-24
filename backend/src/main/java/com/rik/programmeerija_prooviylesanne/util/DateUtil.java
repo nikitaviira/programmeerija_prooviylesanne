@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+import static java.time.Instant.from;
 import static java.time.LocalDateTime.ofInstant;
 
 public class DateUtil {
@@ -12,6 +13,10 @@ public class DateUtil {
 
   public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter
       .ofPattern("dd.MM.yyyy")
+      .withZone(TALLINN);
+
+  public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter
+      .ofPattern("dd.MM.yyyy HH:mm:ss")
       .withZone(TALLINN);
 
   static boolean isInsideMockRule;
@@ -39,5 +44,13 @@ public class DateUtil {
 
   public static String formatDate(LocalDateTime date) {
     return date.format(DATE_FORMATTER);
+  }
+
+  public static Instant parseDateTime(String dateTime) {
+    return from(DATE_TIME_FORMATTER.parse(dateTime));
+  }
+
+  public static LocalDateTime parseLocalDateTime(String dateTime) {
+    return LocalDateTime.from(DATE_TIME_FORMATTER.parse(dateTime));
   }
 }

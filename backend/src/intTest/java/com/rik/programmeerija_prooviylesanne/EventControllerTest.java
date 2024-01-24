@@ -12,8 +12,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static com.rik.programmeerija_prooviylesanne.util.DateUtil.TALLINN;
+import static com.rik.programmeerija_prooviylesanne.util.DateUtil.parseLocalDateTime;
 import static com.rik.programmeerija_prooviylesanne.util.DateUtil.setMockNow;
+import static com.rik.programmeerija_prooviylesanne.util.Util.dateTime;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.core.Is.is;
@@ -30,7 +31,7 @@ public class EventControllerTest extends IntTestBase {
 
   @Test
   public void saveEvent_success() throws Exception {
-    setMockNow(LocalDateTime.of(2024, 1, 22, 17, 0).atZone(TALLINN).toInstant());
+    setMockNow(dateTime("22.01.2024 17:00:00"));
     String event = "{\"name\": \"Sunnipaev\", \"timestamp\" : \"2024-01-22T17:01\", \"place\" : \"Mustamae tee 11\", \"info\" : \"\"}";
     mockMvc.perform(
             post("/api/events/save")
@@ -44,7 +45,7 @@ public class EventControllerTest extends IntTestBase {
     assertThat(eventOpt.get().getName()).isEqualTo("Sunnipaev");
     assertThat(eventOpt.get().getPlace()).isEqualTo("Mustamae tee 11");
     assertThat(eventOpt.get().getInfo()).isEqualTo("");
-    assertThat(eventOpt.get().getTimestamp()).isEqualTo(LocalDateTime.of(2024, 1, 22, 17, 1));
+    assertThat(eventOpt.get().getTimestamp()).isEqualTo(parseLocalDateTime("22.01.2024 17:01:00"));
   }
 
   @Test
@@ -65,13 +66,13 @@ public class EventControllerTest extends IntTestBase {
 
   @Test
   public void futureEvents() throws Exception {
-    setMockNow(LocalDateTime.of(2024, 1, 22, 17, 30).atZone(TALLINN).toInstant());
+    setMockNow(dateTime("22.01.2024 17:30:00"));
 
     eventRepository.saveAllAndFlush(List.of(
-        event("Event 1", LocalDateTime.of(2024, 1, 22, 17, 29), "Place 1", ""),
-        event("Event 2", LocalDateTime.of(2024, 1, 22, 17, 30), "Place 2", ""),
-        event("Event 3", LocalDateTime.of(2024, 1, 23, 2, 2), "Place 3", ""),
-        event("Event 4", LocalDateTime.of(2024, 1, 24, 2, 2), "Place 4", ""))
+        event("Event 1", parseLocalDateTime("22.01.2024 17:29:00"), "Place 1", ""),
+        event("Event 2", parseLocalDateTime("22.01.2024 17:30:00"), "Place 2", ""),
+        event("Event 3", parseLocalDateTime("23.01.2024 00:00:00"), "Place 3", ""),
+        event("Event 4", parseLocalDateTime("24.01.2024 00:00:00"), "Place 4", ""))
     );
 
     mockMvc.perform(get("/api/events/future"))
@@ -90,13 +91,13 @@ public class EventControllerTest extends IntTestBase {
 
   @Test
   public void pastEvents() throws Exception {
-    setMockNow(LocalDateTime.of(2024, 1, 22, 17, 30).atZone(TALLINN).toInstant());
+    setMockNow(dateTime("22.01.2024 17:30:00"));
 
     eventRepository.saveAllAndFlush(List.of(
-        event("Event 1", LocalDateTime.of(2024, 1, 22, 17, 29), "Place 1", ""),
-        event("Event 2", LocalDateTime.of(2024, 1, 22, 17, 30), "Place 2", ""),
-        event("Event 3", LocalDateTime.of(2024, 1, 23, 2, 2), "Place 3", ""),
-        event("Event 4", LocalDateTime.of(2024, 1, 24, 2, 2), "Place 4", ""))
+        event("Event 1", parseLocalDateTime("22.01.2024 17:29:00"), "Place 1", ""),
+        event("Event 2", parseLocalDateTime("22.01.2024 17:30:00"), "Place 2", ""),
+        event("Event 3", parseLocalDateTime("23.01.2024 00:00:00"), "Place 3", ""),
+        event("Event 4", parseLocalDateTime("24.01.2024 00:00:00"), "Place 4", ""))
     );
 
     mockMvc.perform(get("/api/events/past"))
@@ -115,7 +116,7 @@ public class EventControllerTest extends IntTestBase {
 
   @Test
   public void deleteEvents() throws Exception {
-    setMockNow(LocalDateTime.of(2024, 1, 1, 1, 1).atZone(TALLINN).toInstant());
+    setMockNow(dateTime("01.01.2024 00:00:00"));
     eventRepository.saveAndFlush(event("Event 1", LocalDateTime.of(2024, 2, 2, 2, 2), "Place 1", "some info"));
     assertThat(eventRepository.findAll()).hasSize(1);
 
@@ -126,7 +127,7 @@ public class EventControllerTest extends IntTestBase {
 
   @Test
   public void deleteEvents_canNotDeleteEventInPast() throws Exception {
-    eventRepository.saveAndFlush(event("Event 1", LocalDateTime.of(2024, 1, 1, 1, 1), "Place 1", "some info"));
+    eventRepository.saveAndFlush(event("Event 1", parseLocalDateTime("01.01.2024 00:00:00"), "Place 1", "some info"));
     assertThat(eventRepository.findAll()).hasSize(1);
 
     mockMvc.perform(delete("/api/events/1"))
