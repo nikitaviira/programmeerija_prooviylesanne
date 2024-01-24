@@ -19,7 +19,7 @@ public record CompanyDto(
     @ValidCompanyRegistryCode
     String registryCode,
     @NotNull(message = "Osavõtjate arv on kohustuslik")
-    @Max(value = 100, message = "Maksimaalne osavõtjate arv on 100")
+    @Max(value = 100, message = "Maksimaalne osavõtjate arv on {value}")
     Integer participantsCount,
     @NotNull(message = "Maksmise viis on kohustuslik")
     PaymentType paymentType,
