@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AddEventView from '@/views/AddEventView.vue';
 import ParticipantsView from '@/views/ParticipantsView.vue';
+import PersonDetailsView from '@/views/PersonDetailsView.vue';
+import CompanyDetailsView from '@/views/CompanyDetailsView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,9 +19,22 @@ const router = createRouter({
       component: AddEventView
     },
     {
-      path: '/participants',
+      path: '/event/:id/participants',
       name: 'participants',
-      component: ParticipantsView
+      component: ParticipantsView,
+      props: true
+    },
+    {
+      path: '/company/:id',
+      name: 'company-details',
+      component: CompanyDetailsView,
+      props: true
+    },
+    {
+      path: '/person/:id',
+      name: 'person-details',
+      component: PersonDetailsView,
+      props: true
     }
   ]
 });
