@@ -14,8 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.ResponseEntity.status;
 
 @ControllerAdvice
@@ -30,6 +29,11 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler(ServiceException.class)
   public ResponseEntity<ErrorDto> handleServiceException(ServiceException exception) {
     return status(BAD_REQUEST).body(new ErrorDto(exception.getMessage()));
+  }
+
+  @ExceptionHandler(NotFoundException.class)
+  public ResponseEntity<ErrorDto> handleNotFoundException(NotFoundException exception) {
+    return status(NOT_FOUND).body(new ErrorDto(exception.getMessage()));
   }
 
   @Override
