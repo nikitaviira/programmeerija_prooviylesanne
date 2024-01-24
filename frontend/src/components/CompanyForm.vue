@@ -66,10 +66,10 @@
         See väli on kohustuslik
       </div>
       <div
-        v-else-if="$v.participantsCount.$dirty && $v.participantsCount.numeric.$invalid"
+        v-else-if="$v.participantsCount.$dirty && $v.participantsCount.maxValue.$invalid"
         class="invalid-feedback d-block"
       >
-        Osavõtjate arv peab olema number
+        Maksimaalne osavõtjate arv on 100
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@
 </template>
 
 <script setup lang="ts">
-  import { numeric, required } from '@vuelidate/validators';
+  import { maxValue, required } from '@vuelidate/validators';
   import { ref } from 'vue';
   import { type CompanyDto, PaymentType } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
@@ -159,7 +159,7 @@
   const rules = {
     name: { required },
     registryCode: { required, registryCodeIsValid },
-    participantsCount: { required, numeric },
+    participantsCount: { required, maxValue: maxValue(100) },
     paymentType: { required }
   };
 
