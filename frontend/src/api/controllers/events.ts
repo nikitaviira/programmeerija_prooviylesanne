@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios';
 import apiClient from '../client';
-import type {EventDto, SaveEventDto} from "@/api/types";
+import type { EventDto, SaveEventDto } from '@/api/types';
 
 export default {
   futureEvents(): Promise<AxiosResponse<EventDto[]>> {

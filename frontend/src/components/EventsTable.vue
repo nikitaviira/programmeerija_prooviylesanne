@@ -4,7 +4,10 @@
       {{ title }}
     </h5>
     <div class="bg-white p-3">
-      <div v-if="events.length > 0" class="grid">
+      <div
+        v-if="events.length > 0"
+        class="grid"
+      >
         <template
           v-for="(event, index) in events"
           :key="index"
@@ -22,19 +25,22 @@
             <img
               class="action-icon mx-2"
               src="@/assets/images/people.svg"
-              alt="show members button"
             >
             <img
               v-if="showDelete"
               class="action-icon"
               src="@/assets/images/remove.svg"
-              alt="remove event button"
               @click="deleteEvent(event.id)"
             >
           </div>
         </template>
       </div>
-      <p class="text-center" v-else>Ei ole ühtegi üritust</p>
+      <p
+        v-else
+        class="text-center"
+      >
+        Ei ole ühtegi üritust
+      </p>
     </div>
   </div>
 </template>

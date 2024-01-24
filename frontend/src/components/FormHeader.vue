@@ -9,7 +9,6 @@
     <div class="col-md-9 col-sm-8 h-100">
       <img
         src="@/assets/images/libled.jpg"
-        alt="Image"
         class="img-fluid w-100 h-100 object-fit-cover"
       >
     </div>

@@ -83,34 +83,32 @@
           />
         </div>
       </div>
-      <div class="mb-3">
-        <button
-          type="button"
-          class="btn back-btn me-2"
-          @click="goToHomePage"
-        >
-          Tagasi
-        </button>
-        <button
-          type="button"
-          class="btn submit-btn"
-          @click.prevent="submitForm"
-        >
-          Lisa
-        </button>
-      </div>
+      <button
+        type="button"
+        class="btn back-btn me-2"
+        @click="goToHomePage"
+      >
+        Tagasi
+      </button>
+      <button
+        type="button"
+        class="btn submit-btn"
+        @click.prevent="submitForm"
+      >
+        Lisa
+      </button>
     </div>
   </Form>
 </template>
 
 <script setup lang="ts">
   import Form from '@/components/Form.vue';
-  import {ref} from 'vue';
+  import { ref } from 'vue';
   import useVuelidate from '@vuelidate/core';
-  import {required} from '@vuelidate/validators';
-  import {useRouter} from 'vue-router';
+  import { required } from '@vuelidate/validators';
+  import { useRouter } from 'vue-router';
   import eventsApi from '@/api/controllers/events';
-  import type {SaveEventDto} from "@/api/types";
+  import type { SaveEventDto } from '@/api/types';
 
   const router = useRouter();
   const timestampValidation = (value: string) => new Date() <= new Date(value);
@@ -119,21 +117,23 @@
     timestamp: { required, timestampValidation },
     place: { required }
   };
+
   const eventForm = ref<SaveEventDto>({
     name: '',
     timestamp: '',
     place: '',
     info: ''
   });
+
   const $v = useVuelidate(rules, eventForm);
 
   async function submitForm() {
-    await $v.value.$validate().then(async (result) => {
+    await $v.value.$validate().then(async(result) => {
       if (result) {
         await eventsApi.saveEvent(eventForm.value);
         await goToHomePage();
       }
-    })
+    });
   }
 
   async function goToHomePage() {
@@ -165,7 +165,6 @@
   }
 
   button {
-    width: 80px;
     color: white;
 
     &.back-btn {

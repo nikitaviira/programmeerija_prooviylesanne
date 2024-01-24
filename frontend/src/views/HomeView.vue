@@ -15,7 +15,6 @@
           <img
             src="@/assets/images/pilt.jpg"
             class="img-fluid w-100"
-            alt="pink"
           >
         </div>
       </div>
@@ -42,15 +41,15 @@
 <script setup lang="ts">
   import EventsTable from '@/components/EventsTable.vue';
   import type { EventDto } from '@/api/types';
-  import {onBeforeMount, ref} from "vue";
+  import { onBeforeMount, ref } from 'vue';
   import eventsApi from '@/api/controllers/events';
 
   const futureEvents = ref<EventDto[]>([]);
   const pastEvents = ref<EventDto[]>([]);
 
-  onBeforeMount(async () => {
+  onBeforeMount(async() => {
     await loadEvents();
-  })
+  });
 
   async function loadEvents() {
     const [future, past] = await Promise.all([

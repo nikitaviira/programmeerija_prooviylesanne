@@ -4,7 +4,6 @@
       <span class="navbar-brand mx-sm-4">
         <img
           src="@/assets/images/logo.svg"
-          alt="logo"
         >
       </span>
       <button
@@ -45,7 +44,6 @@
       </div>
       <img
         src="@/assets/images/symbol.svg"
-        alt="symbol"
         class="mx-4 d-none d-md-block"
       >
     </div>
