@@ -3,6 +3,7 @@ package com.rik.programmeerija_prooviylesanne.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Table(name = "event")
+@ToString(exclude = {"persons", "companies"})
 public class Event {
     @Id
     @GeneratedValue(strategy = IDENTITY)
