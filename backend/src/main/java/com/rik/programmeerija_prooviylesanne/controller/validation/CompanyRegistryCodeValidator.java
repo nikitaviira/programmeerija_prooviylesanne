@@ -6,7 +6,7 @@ import jakarta.validation.ConstraintValidatorContext;
 import static com.rik.programmeerija_prooviylesanne.util.CodeValidationHelper.validateCompanyRegistryCode;
 
 
-class CompanyRegistryCodeValidator implements ConstraintValidator<CompanyRegistryCode, String> {
+class CompanyRegistryCodeValidator implements ConstraintValidator<ValidCompanyRegistryCode, String> {
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     return validateCompanyRegistryCode(value);

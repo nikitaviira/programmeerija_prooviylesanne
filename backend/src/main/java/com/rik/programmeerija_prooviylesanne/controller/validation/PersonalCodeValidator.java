@@ -5,7 +5,7 @@ import jakarta.validation.ConstraintValidatorContext;
 
 import static com.rik.programmeerija_prooviylesanne.util.CodeValidationHelper.validatePersonalCode;
 
-class PersonalCodeValidator implements ConstraintValidator<PersonalCode, String> {
+class PersonalCodeValidator implements ConstraintValidator<ValidPersonalCode, String> {
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     return validatePersonalCode(value);

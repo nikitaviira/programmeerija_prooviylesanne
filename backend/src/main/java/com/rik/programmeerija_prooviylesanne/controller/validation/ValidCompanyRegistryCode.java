@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PersonalCodeValidator.class)
-public @interface PersonalCode {
+@Constraint(validatedBy = CompanyRegistryCodeValidator.class)
+public @interface ValidCompanyRegistryCode {
 
-  String message() default "Isikukood ei ole valiidne";
+  String message() default "Ettevõtte registrikood ei ole valiidne";
 
   Class<?>[] groups() default {};
 
