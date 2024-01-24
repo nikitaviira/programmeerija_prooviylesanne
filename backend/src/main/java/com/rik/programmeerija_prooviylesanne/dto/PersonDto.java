@@ -19,8 +19,8 @@ public record PersonDto(
     @NotBlank(message = "Isikukood on kohustuslik")
     @ValidPersonalCode
     String personalCode,
-    @NotNull(message = "Toimumisaeg on kohustuslik")
+    @NotNull(message = "Maksmise viis on kohustuslik")
     PaymentType paymentType,
-    @Size(max = 1500, message = "Maksimaalne pikkus on {max} sümbolid")
+    @Size(max = 1500, message = "Maksimaalne lisainfo pikkus on {max} sümbolid")
     String info
 ) {}

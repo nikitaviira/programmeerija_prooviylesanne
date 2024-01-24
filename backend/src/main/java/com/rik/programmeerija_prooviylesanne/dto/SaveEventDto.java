@@ -19,6 +19,6 @@ public record SaveEventDto(
     LocalDateTime timestamp,
     @NotBlank(message = "Koht on kohustuslik")
     String place,
-    @Size(max = 1000, message = "Maksimaalne pikkus on {max} sümbolid")
+    @Size(max = 1000, message = "Maksimaalne lisainfo pikkus on {max} sümbolid")
     String info
 ) {}
