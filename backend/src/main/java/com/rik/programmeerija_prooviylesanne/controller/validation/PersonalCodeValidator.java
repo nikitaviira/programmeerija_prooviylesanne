@@ -3,7 +3,7 @@ package com.rik.programmeerija_prooviylesanne.controller.validation;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import static com.rik.programmeerija_prooviylesanne.util.PersonalCodeValidationHelper.validatePersonalCode;
+import static com.rik.programmeerija_prooviylesanne.util.CodeValidationHelper.validatePersonalCode;
 
 class PersonalCodeValidator implements ConstraintValidator<PersonalCode, String> {
   @Override
