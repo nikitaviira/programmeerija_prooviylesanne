@@ -3,6 +3,7 @@ package com.rik.programmeerija_prooviylesanne.dto;
 import com.rik.programmeerija_prooviylesanne.controller.validation.FutureTimestamp;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,5 +19,6 @@ public record SaveEventDto(
     LocalDateTime timestamp,
     @NotBlank(message = "Koht on kohustuslik")
     String place,
+    @Size(max = 1000, message = "Maksimaalne pikkus on {max} sümbolid")
     String info
 ) {}
