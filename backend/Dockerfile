@@ -1,7 +1,7 @@
 FROM amazoncorretto:21 AS build
 WORKDIR /app
 COPY ./ /app
-RUN ./gradlew build -x test
+RUN ./gradlew build -x test -x integrationTest
 
 # Runtime stage
 FROM amazoncorretto:21 AS runtime

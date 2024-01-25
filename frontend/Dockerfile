@@ -1,11 +1,6 @@
 FROM node
-
-WORKDIR /usr/src/app
-
-COPY ./package.json .
-
-RUN npm i
-
-COPY . .
-
-CMD ["npm", "run", "dev"]
+COPY . /frontend
+WORKDIR /frontend
+RUN npm install update
+RUN npm install
+CMD npm run dev
