@@ -145,16 +145,20 @@
 
 <script setup lang="ts">
   import { maxValue, required } from '@vuelidate/validators';
-  import { ref } from 'vue';
+  import { ref, watch, defineExpose } from 'vue';
   import { type CompanyDto, PaymentType } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
   import { registryCodeIsValid } from '@/util/validation';
   import WordCounter from '@/components/WordCounter.vue';
 
+  defineExpose({ clearForm });
+
   const emit = defineEmits<{
-    (e: 'saved'): void,
+    (e: 'saved', value: CompanyDto): void,
     (e: 'back'): void
   }>();
+
+  const props = defineProps<{ company?: CompanyDto }>();
 
   const rules = {
     name: { required },
@@ -164,7 +168,6 @@
   };
 
   const companyForm = ref<CompanyDto>({
-    id: null,
     name: '',
     registryCode: '',
     participantsCount: undefined,
@@ -174,27 +177,29 @@
 
   const $v = useVuelidate(rules, companyForm);
 
+  watch(() => props.company, (value) => {
+    if (value) {
+      companyForm.value = Object.assign({}, props.company);
+    }
+  });
+
   async function submitForm() {
     await $v.value.$validate().then(async(result) => {
       if (result) {
-        emit('saved');
+        emit('saved', companyForm.value);
       }
     });
   }
-</script>
 
-<style scoped lang="scss">
-  @import "@/assets/scss/variables";
+  function clearForm() {
+    companyForm.value = {
+      name: '',
+      registryCode: '',
+      participantsCount: undefined,
+      paymentType: undefined,
+      info: ''
+    };
 
-  button {
-    color: white;
-
-    &.back-btn {
-      background: grey;
-    }
-
-    &.submit-btn {
-      background: $secondary-color;
-    }
+    $v.value.$reset();
   }
-</style>
+</script>

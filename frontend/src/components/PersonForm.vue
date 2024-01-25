@@ -139,16 +139,20 @@
 
 <script setup lang="ts">
   import { required } from '@vuelidate/validators';
-  import { ref } from 'vue';
+  import { defineExpose, ref, watch } from 'vue';
   import { PaymentType, type PersonDto } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
   import { personalCodeIsValid } from '@/util/validation';
   import WordCounter from '@/components/WordCounter.vue';
 
+  defineExpose({ clearForm });
+
   const emit = defineEmits<{
-    (e: 'saved'): void,
+    (e: 'saved', value: PersonDto): void,
     (e: 'back'): void
   }>();
+
+  const props = defineProps<{ person?: PersonDto }>();
 
   const rules = {
     firstName: { required },
@@ -158,7 +162,6 @@
   };
 
   const personForm = ref<PersonDto>({
-    id: null,
     firstName: '',
     lastName: '',
     personalCode: '',
@@ -168,27 +171,29 @@
 
   const $v = useVuelidate(rules, personForm);
 
+  watch(() => props.person, (value) => {
+    if (value) {
+      personForm.value = Object.assign({}, props.person);
+    }
+  });
+
   async function submitForm() {
     await $v.value.$validate().then(async(result) => {
       if (result) {
-        emit('saved');
+        emit('saved', personForm.value);
       }
     });
   }
+
+  function clearForm() {
+    personForm.value = {
+      firstName: '',
+      lastName: '',
+      personalCode: '',
+      paymentType: undefined,
+      info: ''
+    };
+
+    $v.value.$reset();
+  }
 </script>
-
-<style scoped lang="scss">
-@import "@/assets/scss/variables";
-
-button {
-  color: white;
-
-  &.back-btn {
-    background: grey;
-  }
-
-  &.submit-btn {
-    background: $secondary-color;
-  }
-}
-</style>
