@@ -1,0 +1,1 @@
+docker compose down && docker compose -f docker-compose-uitest.yml up -d --build && cd frontend && npm run run:cypress
