@@ -35,16 +35,24 @@ html, body, #app {
   .form-title {
     color: $secondary-color;
   }
+}
 
-  button {
-    color: white;
+button {
+  color: white !important;
 
-    &.back-btn {
-      background: grey;
+  &.back-btn {
+    background: grey;
+
+    &:hover {
+      background: color-mix(in srgb, grey, transparent 40%) !important;
     }
+  }
 
-    &.submit-btn {
-      background: $secondary-color;
+  &.submit-btn {
+    background: $secondary-color;
+
+    &:hover {
+      background: color-mix(in srgb, $secondary-color, transparent 40%) !important;
     }
   }
 }

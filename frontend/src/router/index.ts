@@ -4,6 +4,7 @@ import AddEventView from '@/views/AddEventView.vue';
 import ParticipantsView from '@/views/ParticipantsView.vue';
 import PersonDetailsView from '@/views/PersonDetailsView.vue';
 import CompanyDetailsView from '@/views/CompanyDetailsView.vue';
+import PageNotFound from '@/views/PageNotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,14 @@ const router = createRouter({
       name: 'person-details',
       component: PersonDetailsView,
       props: true
+    },
+    {
+      path: '/404',
+      component: PageNotFound
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/404'
     }
   ]
 });
