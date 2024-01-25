@@ -16,8 +16,12 @@ export enum PaymentType {
   BANK_TRANSFER = 'BANK_TRANSFER'
 }
 
+export enum ParticipantType {
+  COMPANY = 'COMPANY',
+  PERSON = 'PERSON'
+}
+
 export interface CompanyDto {
-  id: number | null
   name: string
   registryCode: string
   participantsCount: number | undefined
@@ -26,7 +30,6 @@ export interface CompanyDto {
 }
 
 export interface PersonDto {
-  id: number | null
   firstName: string
   lastName: string
   personalCode: string
@@ -37,4 +40,19 @@ export interface PersonDto {
 export interface ErrorDto {
   message: string;
   fields: string[];
+}
+
+export interface EventParticipantDto {
+  id: number
+  fullName: string
+  code: string
+  participantType: ParticipantType
+}
+
+export interface EventDetailsDto {
+  id: number | undefined
+  name: string
+  datetime: string
+  place: string
+  participants: EventParticipantDto[]
 }

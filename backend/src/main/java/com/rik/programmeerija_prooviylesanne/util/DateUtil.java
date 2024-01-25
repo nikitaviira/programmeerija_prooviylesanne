@@ -19,6 +19,10 @@ public class DateUtil {
       .ofPattern("dd.MM.yyyy HH:mm:ss")
       .withZone(TALLINN);
 
+  public static final DateTimeFormatter DATE_HOUR_MINUTE_FORMATTER = DateTimeFormatter
+      .ofPattern("dd.MM.yyyy HH:mm")
+      .withZone(TALLINN);
+
   static boolean isInsideMockRule;
   private static final ThreadLocal<Instant> mockNow = new ThreadLocal<>();
 
@@ -44,6 +48,10 @@ public class DateUtil {
 
   public static String formatDate(LocalDateTime date) {
     return date.format(DATE_FORMATTER);
+  }
+
+  public static String formatDateTimeShort(LocalDateTime localDateTime) {
+    return localDateTime.format(DATE_HOUR_MINUTE_FORMATTER);
   }
 
   public static Instant parseDateTime(String dateTime) {

@@ -111,7 +111,7 @@
   import useVuelidate from '@vuelidate/core';
   import { required } from '@vuelidate/validators';
   import { useRouter } from 'vue-router';
-  import eventsApi from '@/api/controllers/events';
+  import eventsApi from '@/api/controllers/event';
   import type { SaveEventDto } from '@/api/types';
   import WordCounter from '@/components/WordCounter.vue';
 

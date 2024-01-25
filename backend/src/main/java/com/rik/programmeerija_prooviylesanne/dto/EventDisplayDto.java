@@ -1,6 +1,6 @@
 package com.rik.programmeerija_prooviylesanne.dto;
 
-public record EventDto(
+public record EventDisplayDto(
     Long id,
     String name,
     String date

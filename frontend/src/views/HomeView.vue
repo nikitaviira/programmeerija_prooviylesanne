@@ -42,7 +42,7 @@
   import EventsTable from '@/components/EventsTable.vue';
   import type { EventDto } from '@/api/types';
   import { onBeforeMount, ref } from 'vue';
-  import eventsApi from '@/api/controllers/events';
+  import eventsApi from '@/api/controllers/event';
 
   const futureEvents = ref<EventDto[]>([]);
   const pastEvents = ref<EventDto[]>([]);

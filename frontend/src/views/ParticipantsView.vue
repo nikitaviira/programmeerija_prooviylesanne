@@ -10,7 +10,7 @@
           Ürituse nimi:
         </div>
         <div class="col-sm-9">
-          Some event name
+          {{ eventDetails.name }}
         </div>
       </div>
 
@@ -19,7 +19,7 @@
           Toimumisaeg:
         </div>
         <div class="col-sm-9">
-          18.02.2016 14:55
+          {{ eventDetails.datetime }}
         </div>
       </div>
 
@@ -28,37 +28,45 @@
           Koht:
         </div>
         <div class="col-sm-9">
-          Some random place
+          {{ eventDetails.place }}
         </div>
       </div>
 
       <p>Osavõtjad:</p>
-      <div class="grid">
+      <div
+        v-if="eventDetails.participants.length > 0"
+        class="grid"
+      >
         <template
-          v-for="n in 3"
-          :key="n"
+          v-for="(participant, index) in eventDetails.participants"
+          :key="index"
         >
           <div class="g-col-1">
-            {{ n }}.
+            {{ index + 1 }}.
           </div>
           <div class="g-col-5">
-            Liikluslab Baltic OU
+            {{ participant.fullName }}
           </div>
           <div class="g-col-4">
-            39807093721
+            {{ participant.code }}
           </div>
           <div class="g-col-2 text-center">
             <img
               class="action-icon mx-2"
               src="@/assets/images/eye.svg"
+              @click="toParticipantDetails(participant)"
             >
             <img
               class="action-icon"
               src="@/assets/images/remove.svg"
+              @click="removeParticipantFromEvent(participant)"
             >
           </div>
         </template>
       </div>
+      <p v-else>
+        Ei ole ühtegi osavõtja
+      </p>
 
       <p class="form-title fw-normal fs-3 mt-5">
         Osavõtjate lisamine
@@ -70,7 +78,7 @@
           <div class="d-flex gap-4">
             <div class="form-check">
               <input
-                v-model="participantType"
+                v-model="participantTypeSelector"
                 :value="ParticipantType.PERSON"
                 class="form-check-input"
                 type="radio"
@@ -79,7 +87,7 @@
             </div>
             <div class="form-check">
               <input
-                v-model="participantType"
+                v-model="participantTypeSelector"
                 :value="ParticipantType.COMPANY"
                 class="form-check-input"
                 type="radio"
@@ -91,14 +99,16 @@
       </div>
 
       <CompanyForm
-        v-if="participantType === ParticipantType.COMPANY"
-        @saved="() => {}"
+        v-if="participantTypeSelector === ParticipantType.COMPANY"
+        ref="companyForm"
+        @saved="saveCompany"
         @back="toHomePage"
       />
 
       <PersonForm
-        v-if="participantType === ParticipantType.PERSON"
-        @saved="() => {}"
+        v-if="participantTypeSelector === ParticipantType.PERSON"
+        ref="personForm"
+        @saved="savePerson"
         @back="toHomePage"
       />
     </div>
@@ -107,19 +117,77 @@
 
 <script setup lang="ts">
   import Form from '@/components/Form.vue';
-  import { ref } from 'vue';
+  import { onBeforeMount, ref } from 'vue';
   import CompanyForm from '@/components/CompanyForm.vue';
   import PersonForm from '@/components/PersonForm.vue';
   import { useRouter } from 'vue-router';
-
-  enum ParticipantType {
-    COMPANY, PERSON
-  }
+  import EventApi from '@/api/controllers/event';
+  import CompanyApi from '@/api/controllers/company';
+  import PersonApi from '@/api/controllers/person';
+  import {
+    type CompanyDto,
+    type EventDetailsDto,
+    type EventParticipantDto,
+    ParticipantType,
+    type PersonDto
+  } from '@/api/types';
 
   const router = useRouter();
-  const participantType = ref<ParticipantType>(ParticipantType.PERSON);
+  const participantTypeSelector = ref<ParticipantType>(ParticipantType.PERSON);
+  const eventId: number = parseInt(router.currentRoute.value.params.id as string);
+  const companyForm = ref(null);
+  const personForm = ref(null);
+  const eventDetails = ref<EventDetailsDto>({
+    id: undefined,
+    datetime: '',
+    name: '',
+    place: '',
+    participants: []
+  });
+
+  onBeforeMount(() => {
+    loadEventDetails();
+  });
+
+  // Lisasin ts-ignore, sest meetodid, mis on lisatud defineExpose kaudu, ei ole IDEA poolt ära tuntud.
+  async function saveCompany(company: CompanyDto) {
+    await CompanyApi.saveCompany(eventId, company);
+    // @ts-ignore
+    companyForm.value.clearForm();
+    await loadEventDetails();
+  }
+
+  // Lisasin ts-ignore, sest meetodid, mis on lisatud defineExpose kaudu, ei ole IDEA poolt ära tuntud.
+  async function savePerson(person: PersonDto) {
+    await PersonApi.savePerson(eventId, person);
+    // @ts-ignore
+    personForm.value.clearForm();
+    await loadEventDetails();
+  }
+
+  async function loadEventDetails() {
+    const { data } = await EventApi.eventDetails(eventId);
+    eventDetails.value = data;
+  }
 
   async function toHomePage() {
     await router.push('/');
+  }
+
+  async function toParticipantDetails(participant: EventParticipantDto) {
+    if (participant.participantType === ParticipantType.COMPANY) {
+      await router.push(`/company/${participant.id}`);
+    } else {
+      await router.push(`/person/${participant.id}`);
+    }
+  }
+
+  async function removeParticipantFromEvent(participant: EventParticipantDto) {
+    if (participant.participantType === ParticipantType.COMPANY) {
+      await EventApi.removeCompanyFromEvent(eventId, participant.id);
+    } else {
+      await EventApi.removePersonFromEvent(eventId, participant.id);
+    }
+    await loadEventDetails();
   }
 </script>

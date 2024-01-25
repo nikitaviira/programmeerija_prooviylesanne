@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
   import type { EventDto } from '@/api/types';
-  import eventsApi from '@/api/controllers/events';
+  import eventsApi from '@/api/controllers/event';
   import { useRouter } from 'vue-router';
 
   withDefaults(defineProps<{
