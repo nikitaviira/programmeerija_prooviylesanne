@@ -4,37 +4,49 @@
       {{ title }}
     </h5>
     <div class="bg-white p-3">
-      <div
-        v-if="events.length > 0"
-        class="grid"
-      >
-        <template
+      <div v-if="events.length > 0">
+        <div
           v-for="(event, index) in events"
           :key="index"
+          class="grid my-2"
         >
-          <div class="g-col-1">
+          <div
+            id="indexCol"
+            class="g-col-1"
+          >
             {{ index + 1 }}.
           </div>
-          <div class="g-col-5">
+          <div
+            id="nameCol"
+            class="g-col-5"
+          >
             {{ event.name }}
           </div>
-          <div class="g-col-3 text-center">
+          <div
+            id="dateCol"
+            class="g-col-3 text-center"
+          >
             {{ event.date }}
           </div>
-          <div class="g-col-3 text-center">
+          <div
+            id="actionCol"
+            class="g-col-3 text-center"
+          >
             <img
+              id="participantsBtn"
               class="action-icon mx-2"
               src="@/assets/images/people.svg"
               @click="toParticipantsPage(event.id)"
             >
             <img
               v-if="showDelete"
+              id="deleteBtn"
               class="action-icon"
               src="@/assets/images/remove.svg"
               @click="deleteEvent(event.id)"
             >
           </div>
-        </template>
+        </div>
       </div>
       <p
         v-else
@@ -48,7 +60,7 @@
 
 <script setup lang="ts">
   import type { EventDto } from '@/api/types';
-  import eventsApi from '@/api/controllers/event';
+  import EventApi from '@/api/controllers/event';
   import { useRouter } from 'vue-router';
 
   withDefaults(defineProps<{
@@ -63,7 +75,7 @@
   const emit = defineEmits<{ (e: 'event-deleted'): void }>();
 
   async function deleteEvent(id: number) {
-    await eventsApi.deleteEvent(id);
+    await EventApi.deleteEvent(id);
     emit('event-deleted');
   }
 

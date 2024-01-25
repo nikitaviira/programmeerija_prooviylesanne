@@ -10,6 +10,7 @@
         </label>
         <div class="col-sm-9">
           <input
+            id="eventName"
             v-model.trim="eventForm.name"
             type="text"
             :class="{'is-invalid': $v.name.$error}"
@@ -30,6 +31,7 @@
         </label>
         <div class="col-sm-9">
           <input
+            id="timestamp"
             v-model.trim="eventForm.timestamp"
             :class="{'is-invalid': $v.timestamp.$error}"
             type="datetime-local"
@@ -57,6 +59,7 @@
         </label>
         <div class="col-sm-9">
           <input
+            id="place"
             v-model.trim="eventForm.place"
             :class="{'is-invalid': $v.place.$error}"
             type="text"
@@ -77,6 +80,7 @@
         </label>
         <div class="col-sm-9">
           <textarea
+            id="info"
             v-model.trim="eventForm.info"
             maxlength="1000"
             class="form-control"
@@ -111,7 +115,7 @@
   import useVuelidate from '@vuelidate/core';
   import { required } from '@vuelidate/validators';
   import { useRouter } from 'vue-router';
-  import eventsApi from '@/api/controllers/event';
+  import EventApi from '@/api/controllers/event';
   import type { SaveEventDto } from '@/api/types';
   import WordCounter from '@/components/WordCounter.vue';
 
@@ -135,7 +139,7 @@
   async function submitForm() {
     await $v.value.$validate().then(async(result) => {
       if (result) {
-        await eventsApi.saveEvent(eventForm.value);
+        await EventApi.saveEvent(eventForm.value);
         await toHomePage();
       }
     });

@@ -9,6 +9,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/recommended',
+    'plugin:cypress/recommended',
     '@vue/standard',
     '@vue/typescript'
   ],

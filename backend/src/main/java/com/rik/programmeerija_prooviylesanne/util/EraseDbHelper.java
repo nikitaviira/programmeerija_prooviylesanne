@@ -3,13 +3,13 @@ package com.rik.programmeerija_prooviylesanne.util;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Table;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-@Service
+@Component
 public class EraseDbHelper {
     private final EntityManager entityManager;
     private List<String> tableNames;

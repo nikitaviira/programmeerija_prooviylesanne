@@ -42,7 +42,7 @@
   import EventsTable from '@/components/EventsTable.vue';
   import type { EventDto } from '@/api/types';
   import { onBeforeMount, ref } from 'vue';
-  import eventsApi from '@/api/controllers/event';
+  import EventApi from '@/api/controllers/event';
 
   const futureEvents = ref<EventDto[]>([]);
   const pastEvents = ref<EventDto[]>([]);
@@ -53,8 +53,8 @@
 
   async function loadEvents() {
     const [future, past] = await Promise.all([
-      eventsApi.futureEvents(),
-      eventsApi.pastEvents()
+      EventApi.futureEvents(),
+      EventApi.pastEvents()
     ]);
 
     futureEvents.value = future.data;

@@ -9,7 +9,10 @@
         <div class="col-sm-3">
           Ürituse nimi:
         </div>
-        <div class="col-sm-9">
+        <div
+          id="eventName"
+          class="col-sm-9"
+        >
           {{ eventDetails.name }}
         </div>
       </div>
@@ -18,7 +21,10 @@
         <div class="col-sm-3">
           Toimumisaeg:
         </div>
-        <div class="col-sm-9">
+        <div
+          id="eventDateTime"
+          class="col-sm-9"
+        >
           {{ eventDetails.datetime }}
         </div>
       </div>
@@ -27,7 +33,10 @@
         <div class="col-sm-3">
           Koht:
         </div>
-        <div class="col-sm-9">
+        <div
+          id="eventPlace"
+          class="col-sm-9"
+        >
           {{ eventDetails.place }}
         </div>
       </div>
@@ -35,34 +44,49 @@
       <p>Osavõtjad:</p>
       <div
         v-if="eventDetails.participants.length > 0"
-        class="grid"
+        id="participantTable"
       >
-        <template
+        <div
           v-for="(participant, index) in eventDetails.participants"
           :key="index"
+          class="grid"
         >
-          <div class="g-col-1">
+          <div
+            id="indexCol"
+            class="g-col-1"
+          >
             {{ index + 1 }}.
           </div>
-          <div class="g-col-5">
+          <div
+            id="fullNameCol"
+            class="g-col-5"
+          >
             {{ participant.fullName }}
           </div>
-          <div class="g-col-4">
+          <div
+            id="codeCol"
+            class="g-col-4"
+          >
             {{ participant.code }}
           </div>
-          <div class="g-col-2 text-center">
+          <div
+            id="actionCol"
+            class="g-col-2 text-center"
+          >
             <img
+              id="participantDetailsBtn"
               class="action-icon mx-2"
               src="@/assets/images/eye.svg"
               @click="toParticipantDetails(participant)"
             >
             <img
+              id="removeParticipantBtn"
               class="action-icon"
               src="@/assets/images/remove.svg"
               @click="removeParticipantFromEvent(participant)"
             >
           </div>
-        </template>
+        </div>
       </div>
       <p v-else>
         Ei ole ühtegi osavõtja
@@ -78,6 +102,7 @@
           <div class="d-flex gap-4">
             <div class="form-check">
               <input
+                id="eventPersonSelector"
                 v-model="participantTypeSelector"
                 :value="ParticipantType.PERSON"
                 class="form-check-input"
@@ -87,6 +112,7 @@
             </div>
             <div class="form-check">
               <input
+                id="eventCompanySelector"
                 v-model="participantTypeSelector"
                 :value="ParticipantType.COMPANY"
                 class="form-check-input"
