@@ -139,7 +139,7 @@
 
 <script setup lang="ts">
   import { required } from '@vuelidate/validators';
-  import { defineExpose, ref, watch } from 'vue';
+  import { ref, watch } from 'vue';
   import { PaymentType, type PersonDto } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
   import { personalCodeIsValid } from '@/util/validation';

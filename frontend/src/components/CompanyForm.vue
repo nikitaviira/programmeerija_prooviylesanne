@@ -145,7 +145,7 @@
 
 <script setup lang="ts">
   import { maxValue, required } from '@vuelidate/validators';
-  import { ref, watch, defineExpose } from 'vue';
+  import { ref, watch } from 'vue';
   import { type CompanyDto, PaymentType } from '@/api/types';
   import useVuelidate from '@vuelidate/core';
   import { registryCodeIsValid } from '@/util/validation';
