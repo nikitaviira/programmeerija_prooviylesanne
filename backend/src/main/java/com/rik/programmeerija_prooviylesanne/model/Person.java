@@ -31,4 +31,8 @@ public class Person {
 
     @ManyToMany(mappedBy = "persons")
     private List<Event> events;
+
+    public String fullName() {
+        return "%s %s".formatted(firstName, lastName);
+    }
 }
