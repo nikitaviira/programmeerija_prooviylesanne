@@ -4,6 +4,7 @@ import com.rik.programmeerija_prooviylesanne.config.NotFoundException;
 import com.rik.programmeerija_prooviylesanne.dto.CompanyDto;
 import com.rik.programmeerija_prooviylesanne.model.Company;
 import com.rik.programmeerija_prooviylesanne.repository.CompanyRepository;
+import com.rik.programmeerija_prooviylesanne.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,32 +12,43 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CompanyService {
   private final CompanyRepository companyRepository;
+  private final EventRepository eventRepository;
 
   public CompanyDto company(Long id) {
     return companyRepository.findById(id).map(this::toCompanyDto).orElseThrow(this::companyNotFound);
   }
 
-  public void saveCompany(CompanyDto dto) {
-    Company company = getOrCreateCompany(dto);
-    company.setName(dto.name());
-    company.setRegistryCode(dto.registryCode());
-    company.setParticipantsCount(dto.participantsCount());
-    company.setPaymentType(dto.paymentType());
-    company.setInfo(dto.info());
+  public void updateCompany(Long id, CompanyDto dto) {
+    Company company = companyRepository.findById(id).orElseThrow(this::companyNotFound);
+    setCompanyAttributes(company, dto);
     companyRepository.save(company);
   }
 
-  private Company getOrCreateCompany(CompanyDto dto) {
-    return dto.id() == null ? new Company() : companyRepository.findById(dto.id()).orElseThrow(this::companyNotFound);
+  public void saveCompany(Long eventId, CompanyDto dto) {
+    Company company = new Company();
+    setCompanyAttributes(company, dto);
+    companyRepository.save(company);
+
+    eventRepository.findById(eventId).ifPresent(event -> {
+      event.addCompany(company);
+      eventRepository.save(event);
+    });
   }
 
   private NotFoundException companyNotFound() {
     return new NotFoundException("Ettevõtte sellise ID-ga ei eksisteeri");
   }
 
+  private void setCompanyAttributes(Company company, CompanyDto dto) {
+    company.setName(dto.name());
+    company.setRegistryCode(dto.registryCode());
+    company.setParticipantsCount(dto.participantsCount());
+    company.setPaymentType(dto.paymentType());
+    company.setInfo(dto.info());
+  }
+
   private CompanyDto toCompanyDto(Company company) {
     return new CompanyDto(
-        company.getId(),
         company.getName(),
         company.getRegistryCode(),
         company.getParticipantsCount(),

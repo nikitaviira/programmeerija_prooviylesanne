@@ -17,8 +17,13 @@ public class PersonController {
     return personService.person(id);
   }
 
-  @PostMapping("/save")
-  public void savePerson(@Valid @RequestBody PersonDto person) {
-    personService.savePerson(person);
+  @PostMapping("save")
+  public void savePerson(@Valid @RequestBody PersonDto person, @RequestParam Long eventId) {
+    personService.savePerson(eventId, person);
+  }
+
+  @PutMapping("{id}/update")
+  public void updatePerson(@Valid @RequestBody PersonDto person, @PathVariable Long id) {
+    personService.updatePerson(id, person);
   }
 }

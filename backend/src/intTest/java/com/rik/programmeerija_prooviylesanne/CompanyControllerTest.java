@@ -1,23 +1,27 @@
 package com.rik.programmeerija_prooviylesanne;
 
 import com.rik.programmeerija_prooviylesanne.model.Company;
+import com.rik.programmeerija_prooviylesanne.model.Event;
 import com.rik.programmeerija_prooviylesanne.repository.CompanyRepository;
+import com.rik.programmeerija_prooviylesanne.repository.EventRepository;
 import com.rik.programmeerija_prooviylesanne.util.IntTestBase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.rik.programmeerija_prooviylesanne.model.PaymentType.BANK_TRANSFER;
 import static com.rik.programmeerija_prooviylesanne.model.PaymentType.CASH;
+import static com.rik.programmeerija_prooviylesanne.util.DateUtil.parseLocalDateTime;
+import static com.rik.programmeerija_prooviylesanne.util.Util.event;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc
@@ -26,9 +30,14 @@ public class CompanyControllerTest extends IntTestBase {
   private MockMvc mockMvc;
   @Autowired
   private CompanyRepository companyRepository;
+  @Autowired
+  private EventRepository eventRepository;
 
   @Test
-  public void saveCompany_new() throws Exception {
+  public void saveCompany() throws Exception {
+    Event event = event("Event 1", parseLocalDateTime("22.01.2024 00:00:00"), "Place 1", "");
+    eventRepository.save(event);
+
     String companyJson = "{" +
         "\"name\": \"Ettevotte 1\", " +
         "\"registryCode\" : \"14812701\", " +
@@ -37,7 +46,7 @@ public class CompanyControllerTest extends IntTestBase {
         "\"info\" : \"some info\"}";
 
     mockMvc.perform(
-            post("/api/company/save")
+            post("/api/company/save?eventId=1")
                 .content(companyJson)
                 .contentType(APPLICATION_JSON))
         .andExpect(status().isOk());
@@ -50,55 +59,13 @@ public class CompanyControllerTest extends IntTestBase {
     assertThat(companyOpt.get().getParticipantsCount()).isEqualTo(10);
     assertThat(companyOpt.get().getPaymentType()).isEqualTo(CASH);
     assertThat(companyOpt.get().getInfo()).isEqualTo("some info");
-  }
 
-  @Test
-  public void saveCompany_updateExisting() throws Exception {
-    addDefaultCompany();
-    String updatedCompanyJson = "{" +
-        "\"id\": 1, " +
-        "\"name\": \"Ettevotte 2\", " +
-        "\"registryCode\" : \"10000640\", " +
-        "\"participantsCount\" : 11, " +
-        "\"paymentType\" : \"BANK_TRANSFER\", " +
-        "\"info\" : \"some other info\"}";
-
-    mockMvc.perform(
-            post("/api/company/save")
-                .content(updatedCompanyJson)
-                .contentType(APPLICATION_JSON))
-        .andExpect(status().isOk());
-
-    assertThat(companyRepository.findAll()).hasSize(1);
-
-    Optional<Company> companyOpt = companyRepository.findById(1L);
-    assertThat(companyOpt).isPresent();
-    assertThat(companyOpt.get().getId()).isEqualTo(1L);
-    assertThat(companyOpt.get().getName()).isEqualTo("Ettevotte 2");
-    assertThat(companyOpt.get().getRegistryCode()).isEqualTo("10000640");
-    assertThat(companyOpt.get().getParticipantsCount()).isEqualTo(11);
-    assertThat(companyOpt.get().getPaymentType()).isEqualTo(BANK_TRANSFER);
-    assertThat(companyOpt.get().getInfo()).isEqualTo("some other info");
-  }
-
-  @Test
-  public void saveCompany_updateExisting_wrongId() throws Exception {
-    addDefaultCompany();
-    String updatedCompanyJson = "{" +
-        "\"id\": 2, " +
-        "\"name\": \"Ettevotte 2\", " +
-        "\"registryCode\" : \"10000640\", " +
-        "\"participantsCount\" : 11, " +
-        "\"paymentType\" : \"BANK_TRANSFER\", " +
-        "\"info\" : \"some other info\"}";
-
-    mockMvc.perform(
-            post("/api/company/save")
-                .content(updatedCompanyJson)
-                .contentType(APPLICATION_JSON))
-        .andExpect(status().isNotFound())
-        .andExpect(content().contentType(APPLICATION_JSON))
-        .andExpect(jsonPath("$.message", is("Ettevõtte sellise ID-ga ei eksisteeri")));
+    List<Event> events = companyOpt.get().getEvents();
+    assertThat(events).hasSize(1);
+    assertThat(events.getFirst().getId()).isEqualTo(1L);
+    assertThat(events.getFirst().getName()).isEqualTo("Event 1");
+    assertThat(events.getFirst().getTimestamp()).isEqualTo(parseLocalDateTime("22.01.2024 00:00:00"));
+    assertThat(events.getFirst().getPlace()).isEqualTo("Place 1");
   }
 
   @Test
@@ -126,12 +93,57 @@ public class CompanyControllerTest extends IntTestBase {
   }
 
   @Test
+  public void updateCompany() throws Exception {
+    addDefaultCompany();
+    String updatedCompanyJson = "{" +
+        "\"name\": \"Ettevotte 2\", " +
+        "\"registryCode\" : \"10000640\", " +
+        "\"participantsCount\" : 11, " +
+        "\"paymentType\" : \"BANK_TRANSFER\", " +
+        "\"info\" : \"some other info\"}";
+
+    mockMvc.perform(
+            put("/api/company/1/update")
+                .content(updatedCompanyJson)
+                .contentType(APPLICATION_JSON))
+        .andExpect(status().isOk());
+
+    assertThat(companyRepository.findAll()).hasSize(1);
+
+    Optional<Company> companyOpt = companyRepository.findById(1L);
+    assertThat(companyOpt).isPresent();
+    assertThat(companyOpt.get().getId()).isEqualTo(1L);
+    assertThat(companyOpt.get().getName()).isEqualTo("Ettevotte 2");
+    assertThat(companyOpt.get().getRegistryCode()).isEqualTo("10000640");
+    assertThat(companyOpt.get().getParticipantsCount()).isEqualTo(11);
+    assertThat(companyOpt.get().getPaymentType()).isEqualTo(BANK_TRANSFER);
+    assertThat(companyOpt.get().getInfo()).isEqualTo("some other info");
+  }
+
+  @Test
+  public void updateCompany_wrongId() throws Exception {
+    String updatedCompanyJson = "{" +
+        "\"name\": \"Ettevotte 2\", " +
+        "\"registryCode\" : \"10000640\", " +
+        "\"participantsCount\" : 11, " +
+        "\"paymentType\" : \"BANK_TRANSFER\", " +
+        "\"info\" : \"some other info\"}";
+
+    mockMvc.perform(
+            put("/api/company/1/update")
+                .content(updatedCompanyJson)
+                .contentType(APPLICATION_JSON))
+        .andExpect(status().isNotFound())
+        .andExpect(content().contentType(APPLICATION_JSON))
+        .andExpect(jsonPath("$.message", is("Ettevõtte sellise ID-ga ei eksisteeri")));
+  }
+
+  @Test
   public void company() throws Exception {
     addDefaultCompany();
     mockMvc.perform(get("/api/company/1"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(APPLICATION_JSON))
-        .andExpect(jsonPath("$.id", is(1)))
         .andExpect(jsonPath("$.name", is("Ettevotte 1")))
         .andExpect(jsonPath("$.registryCode", is("14812701")))
         .andExpect(jsonPath("$.participantsCount", is(10)))

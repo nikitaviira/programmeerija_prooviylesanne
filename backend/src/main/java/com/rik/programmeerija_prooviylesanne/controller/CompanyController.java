@@ -17,8 +17,13 @@ public class CompanyController {
     return companyService.company(id);
   }
 
-  @PostMapping("/save")
-  public void saveCompany(@Valid @RequestBody CompanyDto company) {
-    companyService.saveCompany(company);
+  @PostMapping("save")
+  public void saveCompany(@Valid @RequestBody CompanyDto company, @RequestParam Long eventId) {
+    companyService.saveCompany(eventId, company);
+  }
+
+  @PutMapping("{id}/update")
+  public void updateCompany(@Valid @RequestBody CompanyDto company, @PathVariable Long id) {
+    companyService.updateCompany(id, company);
   }
 }

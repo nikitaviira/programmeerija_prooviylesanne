@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import static com.rik.programmeerija_prooviylesanne.util.DateUtil.parseLocalDateTime;
 import static com.rik.programmeerija_prooviylesanne.util.DateUtil.setMockNow;
 import static com.rik.programmeerija_prooviylesanne.util.Util.dateTime;
+import static com.rik.programmeerija_prooviylesanne.util.Util.event;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.core.Is.is;
@@ -117,7 +117,7 @@ public class EventControllerTest extends IntTestBase {
   @Test
   public void deleteEvents() throws Exception {
     setMockNow(dateTime("01.01.2024 00:00:00"));
-    eventRepository.saveAndFlush(event("Event 1", LocalDateTime.of(2024, 2, 2, 2, 2), "Place 1", "some info"));
+    eventRepository.saveAndFlush(event("Event 1", parseLocalDateTime("02.02.2024 00:00:00"), "Place 1", "some info"));
     assertThat(eventRepository.findAll()).hasSize(1);
 
     mockMvc.perform(delete("/api/events/1")).andExpect(status().isOk());
@@ -136,14 +136,5 @@ public class EventControllerTest extends IntTestBase {
         .andExpect(jsonPath("$.message", is("Ei saa kustuta toimunud üritust")));
 
     assertThat(eventRepository.findAll()).hasSize(1);
-  }
-
-  private Event event(String name, LocalDateTime timestamp, String place, String info) {
-    Event event = new Event();
-    event.setName(name);
-    event.setTimestamp(timestamp);
-    event.setPlace(place);
-    event.setInfo(info);
-    return event;
   }
 }
