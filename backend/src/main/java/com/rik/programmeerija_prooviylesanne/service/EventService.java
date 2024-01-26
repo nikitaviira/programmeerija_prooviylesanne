@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 
 import static com.rik.programmeerija_prooviylesanne.dto.ParticipantType.COMPANY;
@@ -69,10 +68,10 @@ public class EventService {
     eventRepository.save(event);
   }
 
-  public void removeCompanyFromEvent(Long id, Long personId) {
+  public void removeCompanyFromEvent(Long id, Long companyId) {
     Event event = findEventOrThrow(id);
     List<Company> companies = event.getCompanies();
-    companies.removeIf(person -> person.getId().equals(personId));
+    companies.removeIf(company -> company.getId().equals(companyId));
     eventRepository.save(event);
   }
 
