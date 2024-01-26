@@ -12,7 +12,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.time.Instant;
 
-import static com.rik.programmeerija_prooviylesanne.util.DateUtil.isInsideMockRule;
+import static com.rik.programmeerija_prooviylesanne.util.DateUtil.isTest;
 import static com.rik.programmeerija_prooviylesanne.util.PostgresqlContainer.getInstance;
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -30,12 +30,12 @@ public class IntTestBase {
     void afterEach() {
         eraseDbHelper.eraseDb();
         DateUtil.resetMockNow();
-        isInsideMockRule = false;
+        DateUtil.isTest = false;
     }
 
     @BeforeEach
     void beforeEach() {
-        isInsideMockRule = true;
+        DateUtil.isTest = true;
         DateUtil.setMockNow(Instant.now().minus(1, DAYS));
     }
 }

@@ -23,11 +23,11 @@ public class DateUtil {
       .ofPattern("dd.MM.yyyy HH:mm")
       .withZone(TALLINN);
 
-  static boolean isInsideMockRule;
+  static boolean isTest;
   private static final ThreadLocal<Instant> mockNow = new ThreadLocal<>();
 
   public static void setMockNow(Instant now) {
-    if (!isInsideMockRule) {
+    if (!isTest) {
       throw new IllegalStateException();
     }
     mockNow.set(now);
