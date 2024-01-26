@@ -14,11 +14,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.rik.programmeerija_prooviylesanne.dto.ParticipantType.COMPANY;
 import static com.rik.programmeerija_prooviylesanne.dto.ParticipantType.PERSON;
 import static com.rik.programmeerija_prooviylesanne.util.DateUtil.*;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Stream.concat;
 
 @Service
@@ -29,6 +31,7 @@ public class EventService {
   public List<EventDisplayDto> futureEvents() {
     LocalDateTime currentDateTime = nowLocalDateTime();
     return eventRepository.findAllByTimestampGreaterThan(currentDateTime).stream()
+        .sorted(comparing(Event::getTimestamp).reversed())
         .map(this::mapToEventDto)
         .toList();
   }
@@ -36,6 +39,7 @@ public class EventService {
   public List<EventDisplayDto> pastEvents() {
     LocalDateTime currentDateTime = nowLocalDateTime();
     return eventRepository.findAllByTimestampIsLessThanEqual(currentDateTime).stream()
+        .sorted(comparing(Event::getTimestamp).reversed())
         .map(this::mapToEventDto)
         .toList();
   }
