@@ -24,12 +24,18 @@ public class CompanyService {
     companyRepository.save(company);
   }
 
+  /**
+   * Kui üritus on olemas, salvestatakse ettevõte ja lisatakse sündmusele.
+   *
+   * @param eventId ürituse ID, millele ettevõte lisatakse
+   * @param dto ettevõtte andmete DTO
+   */
   public void saveCompany(Long eventId, CompanyDto dto) {
-    Company company = new Company();
-    setCompanyAttributes(company, dto);
-    companyRepository.save(company);
-
     eventRepository.findById(eventId).ifPresent(event -> {
+      Company company = new Company();
+      setCompanyAttributes(company, dto);
+      companyRepository.save(company);
+
       event.addCompany(company);
       eventRepository.save(event);
     });
