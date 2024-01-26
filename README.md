@@ -18,7 +18,13 @@
 1) Avage projekt Intellij IDEA's
 2) Avage IntelliJ Run configurations ja käivitage "Integration tests"
 
+### Unit testid käivitamine
+1) Avage projekt Intellij IDEA's
+2) Avage IntelliJ Run configurations ja käivitage "Unit tests"
+
+![run-configuration.png](run-configuration.png)
 
 ## Projekti arhitektuur
 ### Andmebaasi skeem (ERD)
 ![db-schema.jpg](db-schema.jpg)
+### Projekti skeem
