@@ -24,12 +24,18 @@ public class PersonService {
     personRepository.save(person);
   }
 
+  /**
+   * Kui üritus on olemas, salvestatakse füsilist isiku ja lisatakse sündmusele.
+   *
+   * @param eventId ürituse ID, millele füsilist isiku lisatakse
+   * @param dto füsilist isiku andmete DTO
+   */
   public void savePerson(Long eventId, PersonDto dto) {
-    Person person = new Person();
-    setPersonAttributes(person, dto);
-    personRepository.save(person);
-
     eventRepository.findById(eventId).ifPresent(event -> {
+      Person person = new Person();
+      setPersonAttributes(person, dto);
+      personRepository.save(person);
+
       event.addPerson(person);
       eventRepository.save(event);
     });
