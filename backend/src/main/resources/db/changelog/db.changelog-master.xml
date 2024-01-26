@@ -73,4 +73,20 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="1706261452341" author="Nikita Viira">
+        <addNotNullConstraint tableName="event" columnName="name" />
+        <addNotNullConstraint tableName="event" columnName="timestamp" />
+        <addNotNullConstraint tableName="event" columnName="place" />
+
+        <addNotNullConstraint tableName="company" columnName="name" />
+        <addNotNullConstraint tableName="company" columnName="registry_code" />
+        <addNotNullConstraint tableName="company" columnName="participants_count" />
+        <addNotNullConstraint tableName="company" columnName="payment_type" />
+
+        <addNotNullConstraint tableName="person" columnName="first_name" />
+        <addNotNullConstraint tableName="person" columnName="last_name" />
+        <addNotNullConstraint tableName="person" columnName="personal_code" />
+        <addNotNullConstraint tableName="person" columnName="payment_type" />
+    </changeSet>
 </databaseChangeLog>
