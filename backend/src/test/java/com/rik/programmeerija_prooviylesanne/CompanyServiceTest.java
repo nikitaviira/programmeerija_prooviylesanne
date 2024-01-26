@@ -36,19 +36,28 @@ class CompanyServiceTest {
   @Test
   void company() {
     Long companyId = 1L;
-    var company = new Company();
+    Company company = new Company();
+    company.setName("Some name");
+    company.setPaymentType(CASH);
+    company.setRegistryCode("12345");
+    company.setParticipantsCount(15);
+    company.setInfo("info");
     when(companyRepository.findById(companyId)).thenReturn(Optional.of(company));
 
     CompanyDto result = companyService.company(companyId);
 
-    assertThat(result).isNotNull();
+    assertThat(result.name()).isEqualTo("Some name");
+    assertThat(result.paymentType()).isEqualTo(CASH);
+    assertThat(result.participantsCount()).isEqualTo(15);
+    assertThat(result.registryCode()).isEqualTo("12345");
+    assertThat(result.info()).isEqualTo("info");
   }
 
   @Test
   void company_throwsNotFoundException() {
     Long companyId = 1L;
     when(companyRepository.findById(companyId)).thenReturn(empty());
-    assertThrows(NotFoundException.class, () -> companyService.company(companyId));
+    assertThrows(NotFoundException.class, () -> companyService.company(companyId), "Ettevõtte sellise ID-ga ei eksisteeri");
   }
 
   @Test
@@ -83,7 +92,8 @@ class CompanyServiceTest {
     Long companyId = 1L;
     when(companyRepository.findById(companyId)).thenReturn(empty());
     assertThrows(NotFoundException.class,
-        () -> companyService.updateCompany(companyId, new CompanyDto(null, null, null, null, null)));
+        () -> companyService.updateCompany(companyId, new CompanyDto(null, null, null, null, null)),
+        "Ettevõtte sellise ID-ga ei eksisteeri");
   }
 
   @Test
