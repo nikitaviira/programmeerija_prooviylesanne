@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fbad7b4a-32fd-4c03-9f0f-e0f84ae462c3" name="Changes" comment="add event service tests">
+      <change beforePath="$PROJECT_DIR$/project-schema.jpg" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/backend">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/backend">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="programmeerija_prooviylesanne" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="Vue Composition API Component" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2bGAQhk2C3DMWszuViB1GK8YZYc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cypress.all tests in todo.cy.js.executor&quot;: &quot;Run&quot;,
+    &quot;Cypress.all tests in viewport.cy.js (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cypress.all tests in viewport.cy.js.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.backend/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose uitest.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose-uitest.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.client: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.vue-app: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.frontend/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle./home/nikita/IdeaProjects/programmeerija_prooviylesanne/backend/build.gradle.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build backend.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.company.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.company_wrongId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.saveCompany_new.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.saveCompany_updateExisting.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.saveCompany_updateExisting_wrongId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.saveCompany_validationFailed.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyControllerTest.updateCompany_wrongId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyRegistryCodeValidationHelperTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyRegistryCodeValidationHelperTest.test_valid.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.company.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.company_throwsNotFoundException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.saveCompany.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.saveCompany_eventNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.testUpdateCompany.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyServiceTest.updateCompany_throwsNotFoundException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.addEvent_success.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.allEvents.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.deleteEvents.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.deleteEvents_canNotDeleteEventInPast.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.eventDetails.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.futureEvents.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.pastEvents.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.removeCompanyFromEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.removePersonFromEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.saveEvent_success.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.saveEvent_validationFailed.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventControllerTest.whenPostRequestToUsersAndValidUser_thenCorrectResponse.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.EventServiceTest.deleteEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.deleteEvent_cantDeletePastEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.eventDetails.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.futureEvents.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.pastEvents.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.removeCompanyFromEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.removePersonFromEvent.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EventServiceTest.removePersonFromEvent_throwsNotFoundException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Integration tests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IntegrationTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IntegrationTest.idGeneratedOnSave.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IntegrationTest.some_test (1).executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.IntegrationTest.some_test.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.MainTests.contextLoads.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MainTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.person.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.person_wrongId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.saveCompany_validationFailed.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.savePerson.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.savePerson_new.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.savePerson_updateExisting.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.savePerson_updateExisting_wrongId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.savePerson_validationFailed.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.updatePerson.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonControllerTest.updatePerson_wrongId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonalCodeValidationHelperTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonalCodeValidatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PersonalCodeValidatorTest.test_valid.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.Tests in 'com.rik.programmeerija_prooviylesanne.intTest'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'com.rik.programmeerija_prooviylesanne.test'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Unit tests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UtilTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.backend [integrationTest].executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.gradle-wrapper.jar.executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,
+    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.Spring (UI tests).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.Spring (local).executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nikita/IdeaProjects/programmeerija_prooviylesanne&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.lint.executor&quot;: &quot;Run&quot;,
+    &quot;npm.open:cypress.executor&quot;: &quot;Run&quot;,
+    &quot;npm.run cypress UI.executor&quot;: &quot;Run&quot;,
+    &quot;npm.run local.executor&quot;: &quot;Run&quot;,
+    &quot;npm.run:cypress.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test:cypress.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test:cypress:open.executor&quot;: &quot;Run&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/nikita/IdeaProjects/programmeerija_prooviylesanne/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;PostgreSQL&quot;
+    ],
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/frontend/src/views" />
+      <recent name="$PROJECT_DIR$/frontend/src/assets/images" />
+      <recent name="$PROJECT_DIR$/backend/src/main/java/com/rik/programmeerija_prooviylesanne/controller/validation" />
+      <recent name="$PROJECT_DIR$/frontend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.rik.programmeerija_prooviylesanne" />
+      <recent name="com.rik.programmeerija_prooviylesanne.dto" />
+      <recent name="com.rik.programmeerija_prooviylesanne.controller.validation" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.Unit tests">
+    <configuration name="EventServiceTest.deleteEvent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.rik.programmeerija_prooviylesanne.EventServiceTest.deleteEvent&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="EventServiceTest.deleteEvent_cantDeletePastEvent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.rik.programmeerija_prooviylesanne.EventServiceTest.deleteEvent_cantDeletePastEvent&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="EventServiceTest.eventDetails" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.rik.programmeerija_prooviylesanne.EventServiceTest.eventDetails&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="EventServiceTest.removePersonFromEvent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.rik.programmeerija_prooviylesanne.EventServiceTest.removePersonFromEvent&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="EventServiceTest.removePersonFromEvent_throwsNotFoundException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/backend" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.rik.programmeerija_prooviylesanne.EventServiceTest.removePersonFromEvent_throwsNotFoundException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.docker-compose uitest" />
+      <item itemvalue="Docker.docker-compose local" />
+      <item itemvalue="Gradle.Integration tests" />
+      <item itemvalue="Gradle.Unit tests" />
+      <item itemvalue="Gradle.EventServiceTest.deleteEvent" />
+      <item itemvalue="Gradle.EventServiceTest.deleteEvent_cantDeletePastEvent" />
+      <item itemvalue="Gradle.EventServiceTest.eventDetails" />
+      <item itemvalue="Gradle.EventServiceTest.removePersonFromEvent" />
+      <item itemvalue="Gradle.EventServiceTest.removePersonFromEvent_throwsNotFoundException" />
+      <item itemvalue="npm.run local" />
+      <item itemvalue="npm.open cypress UI" />
+      <item itemvalue="npm.run cypress UI" />
+      <item itemvalue="Spring Boot.Spring (local)" />
+      <item itemvalue="Spring Boot.Spring (UI tests)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.EventServiceTest.deleteEvent_cantDeletePastEvent" />
+        <item itemvalue="Gradle.EventServiceTest.deleteEvent" />
+        <item itemvalue="Gradle.EventServiceTest.eventDetails" />
+        <item itemvalue="Gradle.EventServiceTest.removePersonFromEvent_throwsNotFoundException" />
+        <item itemvalue="Gradle.EventServiceTest.removePersonFromEvent" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbad7b4a-32fd-4c03-9f0f-e0f84ae462c3" name="Changes" comment="" />
+      <created>1705831027386</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705831027386</updated>
+      <workItem from="1705831028534" duration="1775000" />
+      <workItem from="1705837508089" duration="25615000" />
+      <workItem from="1705872348537" duration="2776000" />
+      <workItem from="1705916737472" duration="23847000" />
+      <workItem from="1705943325002" duration="270000" />
+      <workItem from="1705998298059" duration="12769000" />
+      <workItem from="1706031482456" duration="7958000" />
+      <workItem from="1706047538575" duration="6457000" />
+      <workItem from="1706089284626" duration="14866000" />
+      <workItem from="1706107089562" duration="7030000" />
+      <workItem from="1706124361538" duration="9576000" />
+      <workItem from="1706172924365" duration="41899000" />
+      <workItem from="1706220971406" duration="2841000" />
+      <workItem from="1706256147456" duration="14742000" />
+      <workItem from="1706275977825" duration="73000" />
+      <workItem from="1706277575334" duration="1000" />
+    </task>
+    <task id="LOCAL-00016" summary="fix toast not showing">
+      <option name="closed" value="true" />
+      <created>1706029651063</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706029651063</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add ability to delete event">
+      <option name="closed" value="true" />
+      <created>1706029785259</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1706029785259</updated>
+    </task>
+    <task id="LOCAL-00018" summary="rename additional_info -&gt; info">
+      <option name="closed" value="true" />
+      <created>1706030732676</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706030732676</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add ServiceException, add handler for ServiceException, @Table annotation is needed for integration tests to work">
+      <option name="closed" value="true" />
+      <created>1706031434987</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706031434987</updated>
+    </task>
+    <task id="LOCAL-00020" summary="add company registry code validator, add validation annotations">
+      <option name="closed" value="true" />
+      <created>1706032771894</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1706032771894</updated>
+    </task>
+    <task id="LOCAL-00021" summary="merge util tests into one test class">
+      <option name="closed" value="true" />
+      <created>1706093878320</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1706093878320</updated>
+    </task>
+    <task id="LOCAL-00022" summary="merge util tests into one test class">
+      <option name="closed" value="true" />
+      <created>1706093890110</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1706093890110</updated>
+    </task>
+    <task id="LOCAL-00023" summary="vue 3 can have multiple root elements">
+      <option name="closed" value="true" />
+      <created>1706093916404</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1706093916404</updated>
+    </task>
+    <task id="LOCAL-00024" summary="remove test class">
+      <option name="closed" value="true" />
+      <created>1706093940649</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706093940649</updated>
+    </task>
+    <task id="LOCAL-00025" summary="refactor validators">
+      <option name="closed" value="true" />
+      <created>1706097287662</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1706097287662</updated>
+    </task>
+    <task id="LOCAL-00026" summary="automatic eslint fixes">
+      <option name="closed" value="true" />
+      <created>1706097391136</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1706097391136</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add mockup of participants page">
+      <option name="closed" value="true" />
+      <created>1706097556164</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1706097556164</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add word counter for textareas">
+      <option name="closed" value="true" />
+      <created>1706097984937</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1706097984937</updated>
+    </task>
+    <task id="LOCAL-00029" summary="add company and person details page mockups">
+      <option name="closed" value="true" />
+      <created>1706103334373</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103334373</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add dto objects for company and person">
+      <option name="closed" value="true" />
+      <created>1706103390860</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103390860</updated>
+    </task>
+    <task id="LOCAL-00031" summary="remove numeric validation, add max value validation">
+      <option name="closed" value="true" />
+      <created>1706103451106</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103451106</updated>
+    </task>
+    <task id="LOCAL-00032" summary="use template syntax instead of hardcoded number">
+      <option name="closed" value="true" />
+      <created>1706103489916</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103489916</updated>
+    </task>
+    <task id="LOCAL-00033" summary="rename">
+      <option name="closed" value="true" />
+      <created>1706103531714</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103531714</updated>
+    </task>
+    <task id="LOCAL-00034" summary="add max length validation for info">
+      <option name="closed" value="true" />
+      <created>1706103548739</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103548739</updated>
+    </task>
+    <task id="LOCAL-00035" summary="rename, extract common scss into global module">
+      <option name="closed" value="true" />
+      <created>1706103598142</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103598142</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add routes for mockup pages">
+      <option name="closed" value="true" />
+      <created>1706103611496</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1706103611496</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add date time helper for integration tests">
+      <option name="closed" value="true" />
+      <created>1706108291004</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1706108291004</updated>
+    </task>
+    <task id="LOCAL-00038" summary="allow lazy loading of hibernate collections outside of transaction scope in tests (to avoid LazyInitializationException)">
+      <option name="closed" value="true" />
+      <created>1706109510223</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1706109510223</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Lombok's @ToString on @ManyToMany collections causes StackOverflowError">
+      <option name="closed" value="true" />
+      <created>1706128953819</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1706128953819</updated>
+    </task>
+    <task id="LOCAL-00040" summary="add 404 frontend page">
+      <option name="closed" value="true" />
+      <created>1706184165078</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184165078</updated>
+    </task>
+    <task id="LOCAL-00041" summary="redirect to 404 page in case of a 404 error from backend">
+      <option name="closed" value="true" />
+      <created>1706184192650</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184192650</updated>
+    </task>
+    <task id="LOCAL-00042" summary="divide update and save of company and person into separate endpoints">
+      <option name="closed" value="true" />
+      <created>1706184362550</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184362550</updated>
+    </task>
+    <task id="LOCAL-00043" summary="add company and person frontend clients">
+      <option name="closed" value="true" />
+      <created>1706184466598</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184466598</updated>
+    </task>
+    <task id="LOCAL-00044" summary="load actual data in details view, update on form save">
+      <option name="closed" value="true" />
+      <created>1706184607594</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184607594</updated>
+    </task>
+    <task id="LOCAL-00045" summary="expose form clear method, pass company and person details as prop">
+      <option name="closed" value="true" />
+      <created>1706184763286</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184763286</updated>
+    </task>
+    <task id="LOCAL-00046" summary="add full name method to person entity">
+      <option name="closed" value="true" />
+      <created>1706184846814</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184846814</updated>
+    </task>
+    <task id="LOCAL-00047" summary="load actual event and participants data, add ability to remove participants from event, rename event client">
+      <option name="closed" value="true" />
+      <created>1706184908191</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1706184908191</updated>
+    </task>
+    <task id="LOCAL-00048" summary="fix dockerfiles and docker-compose, add local start guide in README">
+      <option name="closed" value="true" />
+      <created>1706197437228</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1706197437228</updated>
+    </task>
+    <task id="LOCAL-00049" summary="no need to import defineExpose manually">
+      <option name="closed" value="true" />
+      <created>1706198056027</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1706198056027</updated>
+    </task>
+    <task id="LOCAL-00050" summary="add cypress UI tests">
+      <option name="closed" value="true" />
+      <created>1706218320104</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1706218320105</updated>
+    </task>
+    <task id="LOCAL-00051" summary="add UI test runner">
+      <option name="closed" value="true" />
+      <created>1706219542050</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1706219542050</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add .idea configuration files">
+      <option name="closed" value="true" />
+      <created>1706221041287</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1706221041287</updated>
+    </task>
+    <task id="LOCAL-00053" summary="no need to build the containers on each start">
+      <option name="closed" value="true" />
+      <created>1706259465350</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1706259465350</updated>
+    </task>
+    <task id="LOCAL-00054" summary="rename">
+      <option name="closed" value="true" />
+      <created>1706259745391</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1706259745391</updated>
+    </task>
+    <task id="LOCAL-00055" summary="update docs">
+      <option name="closed" value="true" />
+      <created>1706259764143</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1706259764143</updated>
+    </task>
+    <task id="LOCAL-00056" summary="add missing integration tests">
+      <option name="closed" value="true" />
+      <created>1706260793347</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1706260793347</updated>
+    </task>
+    <task id="LOCAL-00057" summary="cover CompanyService with unit tests, add comment">
+      <option name="closed" value="true" />
+      <created>1706262858879</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1706262858879</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add nonnull DB constraints for obligatory fields">
+      <option name="closed" value="true" />
+      <created>1706262989205</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1706262989206</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add unit test run configuration">
+      <option name="closed" value="true" />
+      <created>1706263013097</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1706263013097</updated>
+    </task>
+    <task id="LOCAL-00060" summary="better test">
+      <option name="closed" value="true" />
+      <created>1706264672526</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1706264672526</updated>
+    </task>
+    <task id="LOCAL-00061" summary="cover PersonService with unit tests, add comment">
+      <option name="closed" value="true" />
+      <created>1706264693650</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1706264693650</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add run configuration location picture to docs">
+      <option name="closed" value="true" />
+      <created>1706264720569</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1706264720569</updated>
+    </task>
+    <task id="LOCAL-00063" summary="sort the events by timestamp from newest to oldest">
+      <option name="closed" value="true" />
+      <created>1706265604118</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1706265604118</updated>
+    </task>
+    <task id="LOCAL-00064" summary="add event service tests">
+      <option name="closed" value="true" />
+      <created>1706267898699</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1706267898699</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add 404 frontend page" />
+    <MESSAGE value="redirect to 404 page in case of a 404 error from backend" />
+    <MESSAGE value="divide update and save of company and person into separate endpoints" />
+    <MESSAGE value="add company and person frontend clients" />
+    <MESSAGE value="load actual data in details view, update on form save" />
+    <MESSAGE value="expose form clear method, pass company and person details as prop" />
+    <MESSAGE value="add full name method to person entity" />
+    <MESSAGE value="load actual event and participants data, add ability to remove participants from event, rename event client" />
+    <MESSAGE value="fix dockerfiles and docker-compose, add local start guide in README" />
+    <MESSAGE value="no need to import defineExpose manually" />
+    <MESSAGE value="add cypress UI tests" />
+    <MESSAGE value="add UI test runner" />
+    <MESSAGE value="add .idea configuration files" />
+    <MESSAGE value="no need to build the containers on each start" />
+    <MESSAGE value="rename" />
+    <MESSAGE value="update docs" />
+    <MESSAGE value="add missing integration tests" />
+    <MESSAGE value="cover CompanyService with unit tests, add comment" />
+    <MESSAGE value="add nonnull DB constraints for obligatory fields" />
+    <MESSAGE value="add unit test run configuration" />
+    <MESSAGE value="better test" />
+    <MESSAGE value="cover PersonService with unit tests, add comment" />
+    <MESSAGE value="add run configuration location picture to docs" />
+    <MESSAGE value="sort the events by timestamp from newest to oldest" />
+    <MESSAGE value="add event service tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="add event service tests" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
