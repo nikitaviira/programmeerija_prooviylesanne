@@ -1,5 +1,11 @@
 # RIK prooviülesanne
 
+## Stack
+#### Serverrakendus: ```Spring Boot (JPA, Web, Validation), Lombok, Testcontainers``` 
+#### Kasutajaliides: ```Vue 3, Vite, Bootstrap, Vuelidate```
+#### Andmebaas: ```PostgreSQL```
+#### UI testid: ```Cypress```
+
 ## Käivitamine
 ### Lokaalne käivitamine
 
@@ -24,7 +30,8 @@
 
 ![run-configuration.png](run-configuration.png)
 
-## Projekti arhitektuur
+## Rakenduse arhitektuur
 ### Andmebaasi skeem (ERD)
 ![db-schema.jpg](db-schema.jpg)
-### Projekti skeem
+### Kihtide skeem
+![project-schema.jpg](project-schema.jpg)
