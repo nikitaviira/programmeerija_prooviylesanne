@@ -49,7 +49,7 @@ public class EventService {
         event.getCompanies().stream()
             .map(c -> new EventParticipantDto(c.getId(), c.getName(), c.getRegistryCode(), COMPANY)),
         event.getPersons().stream()
-            .map(c -> new EventParticipantDto(c.getId(), c.fullName(), c.getPersonalCode(), PERSON))
+            .map(p -> new EventParticipantDto(p.getId(), p.fullName(), p.getPersonalCode(), PERSON))
     ).toList();
 
     return new EventDetailsDto(
